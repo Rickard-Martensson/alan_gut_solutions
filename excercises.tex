@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb} % Essential for math environments and symbols
+\usepackage{enumitem}
+\title{Solutions for [Book Name]}
+\author{Your Name}
+\date{\today}
+\usepackage{geometry}
+
+% Setting smaller margins
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+\begin{document}
+
+\maketitle
+
+% Custom numbering setup
+\renewcommand{\thesection}{\arabic{section}}
+\newcounter{exercise}[section]
+\newcounter{problem}[section]
+
+\newcommand{\exercise}{
+  \stepcounter{exercise}
+  \subsection*{Exercise \thesection.\theexercise}
+}
+
+\newcommand{\problem}{
+  \stepcounter{problem}
+  \subsection*{Problem \thesection.\theproblem}
+}
+
+% Begin document content
+% Chapter 1
+\section{Chapter 1}
+
+\exercise
+Exercise description.
+\subsubsection*{Solution}
+Write your solution here.
+
+\exercise
+Exercise description.
+\subsubsection*{Solution}
+Another solution here.
+
+% Chapter 2
+\section{Chapter 2}
+
+\exercise
+Exercise description.
+\subsubsection*{Solution}
+Write your solution here.
+
+\exercise
+Exercise description.
+\subsubsection*{Solution}
+Another solution here.
+
+% Chapter 3
+\section{Chapter 3}
+
+\exercise
+Exercise description.
+\subsubsection*{Solution}
+Write your solution here.
+
+\exercise
+Exercise description.
+\begin{enumerate}[label=(\alph*)]
+    \item Show that if \( X \sim N(\mu, \sigma^2) \), then \( \mathbb{E}[X] = \mu \) and \( \text{Var}(X) = \sigma^2 \).
+    \item Let \( X_1 \sim N(\mu_1, \sigma_1^2) \) and \( X_2 \sim N(\mu_2, \sigma_2^2) \) be independent random variables. Show that \( X_1 + X_2 \) is normally distributed, and find the mean and variance of \( X_1 + X_2 \).
+    \item Let \( X \sim N(0,\sigma^2) \). Show that for \( n = 0, 1, 2, \ldots \),
+    \[
+    \mathbb{E}[X^{2n+1}] = 0, 
+    \]
+    and 
+    \[
+    \mathbb{E}[X^{2n}] = (2n-1)!! \cdot \sigma^{2n} = 1 \cdot 3 \cdot 5 ... \cdot (2n-1) \cdot \sigma^{2n}.
+    \]
+    Here, \( (2n-1)!! \) denotes the double factorial of \( 2n-1 \).
+\end{enumerate}
+
+\subsubsection*{Solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Given a normal random variable \( X \sim N(\mu, \sigma^2) \), its characteristic function \( \Psi_X(t) \) is expressed as:
+    \[
+    \Psi_X(t) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}.
+    \]
+    The expected value \( \mathbb{E}[X] \) is the coefficient of \( t \) in the Taylor expansion of \( \Psi_X(t) \) around \( t=0 \), which yields:
+    \[
+    \mathbb{E}[X] = \left. \frac{d}{dt}\Psi_X(t) \right|_{t=0} = \mu.
+    \]
+    To find the variance \( \text{Var}(X) \), we compute the second derivative of \( \Psi_X(t) \) at \( t=0 \):
+    \[
+    \text{Var}(X) = \left. \frac{d^2}{dt^2}\Psi_X(t) \right|_{t=0} - (\mu)^2 = \sigma^2.
+    \]
+
+    \item Let \( X_1 \sim N(\mu_1, \sigma_1^2) \) and \( X_2 \sim N(\mu_2, \sigma_2^2) \) be independent random variables. To show that the sum \( X_1 + X_2 \) is also normally distributed and to find its parameters, consider their moment generating functions:
+
+    \[
+    \Psi_{X_1}(t) = e^{\mu_1 t + \frac{1}{2} \sigma_1^2 t^2}, \quad \Psi_{X_2}(t) = e^{\mu_2 t + \frac{1}{2} \sigma_2^2 t^2}.
+    \]
+    
+    Since \( X_1 \) and \( X_2 \) are independent, the MGF of their sum is the product of their MGFs:
+    
+    \[
+    \Psi_{X_1 + X_2}(t) = \Psi_{X_1}(t) \cdot \Psi_{X_2}(t) = e^{\mu_1 t + \frac{1}{2} \sigma_1^2 t^2} \cdot e^{\mu_2 t + \frac{1}{2} \sigma_2^2 t^2}.
+    \]
+    
+    Simplify by combining the exponents:
+    
+    \[
+    \Psi_{X_1 + X_2}(t) = e^{(\mu_1 + \mu_2) t + \frac{1}{2} (\sigma_1^2 + \sigma_2^2) t^2}.
+    \]
+    
+    This is the MGF of a normal distribution with mean \( \mu_1 + \mu_2 \) and variance \( \sigma_1^2 + \sigma_2^2 \). Therefore, \( X_1 + X_2 \) follows a normal distribution \( N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2) \).
+    \item 
+
+    Let \( X \sim N(0, \sigma^2) \). The characteristic function \( \Psi_X(t) \), which also serves as the moment generating function in this context, is given by:
+    \[
+    \Psi_X(t) = e^{\frac{1}{2} \sigma^2 t^2}.
+    \]
+    Expanding \( \Psi_X(t) \) using a Taylor series around \( t = 0 \) results in:
+    \[
+    \Psi_X(t) = \sum_{n=0}^{\infty} \frac{\frac{1}{2}\sigma^2 t^2}{n!} t^{2n} = 1 + \frac{1}{2}\sigma^2 t^2 + \frac{(\frac{1}{2}\sigma^2 t^2)^2}{2!} + \frac{(\frac{1}{2}\sigma^2 t^2)^3}{3!} + \ldots
+= 1 + \frac{\sigma^2 t^2}{2 } + \frac{\sigma^4 t^4}{2^2 \cdot 2!} + \frac{\sigma^6 t^6}{2^3 \cdot 3!} + \ldots
+    \]
+    
+    This series only contains even powers of \( t \), confirming that all coefficients of odd powers of \( t \) are zero, thus:
+    \[
+    \mathbb{E}[X^{2n+1}] = 0
+    \]
+    for all odd powers \( 2n+1 \). This occurs because the derivatives of \( \Psi_X(t) \) at \( t=0 \) for odd orders are zero, as each term in the expansion of \( \Psi_X(t) \) contains even powers.
+    
+    For even powers, consider the coefficient of \( t^{2n} \) in the Taylor expansion:
+    \[
+    \mathbb{E}[X^{2n}] = \left. \frac{d^{2n}}{dt^{2n}} \Psi_X(t) \right|_{t=0} = \left. \frac{d^{2n}}{dt^{2n}} \left( \sum_{k=0}^{\infty} \frac{1}{k!} \left(\frac{1}{2}\sigma^2 t^2\right)^k \right) \right|_{t=0}
+    \]
+    
+    To see why \( \mathbb{E}[X^{2n}] \) equals \((2n-1)!! \sigma^{2n}\), take the \(2n\)-th derivative:
+    \[
+    \mathbb{E}[X^{2n}] = \frac{1}{n!} \left(\frac{1}{2} \sigma^2\right)^n \cdot 2^n \cdot (2n)! = \sigma^{2n} \cdot (2n-1)!!
+    \]
+    This computation correctly reflects the product of the double factorial \((2n-1)!!\) which is the product of all odd numbers up to \((2n-1)\), resulting in:
+    \[
+    (2n-1)!! = 1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2n-1).
+    \]
+    
+\end{enumerate}
+
+
+% Chapter 4
+\section{Chapter 4}
+
+\exercise
+Exercise description.
+\subsubsection*{Solution}
+Write your solution here.
+
+\exercise
+Exercise description.
+\subsubsection*{Solution}
+Another solution here.
+
+\end{document}
