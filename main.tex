@@ -3,17 +3,19 @@
 \usepackage{amsmath, amssymb}
 \usepackage{geometry}
 \usepackage{enumitem}
-
 \usepackage{chngcntr}
 
-% Automatic numbering reset for each subsection
-\newcounter{exercise}[subsection]
-\renewcommand{\theexercise}{\thesubsection.\arabic{exercise}}
+% Define the 'exercise' environment
+% Define the 'exercise' environment
+\newcounter{exercise}[subsection]  % Reset exercise counter at every new subsection
+\renewcommand{\theexercise}{\arabic{subsection}.\arabic{exercise}}  % Numbering format to only show subsection and exercise number
 
 \newcommand{\exercise}{
   \refstepcounter{exercise}
   \subsubsection*{Exercise \theexercise}
 }
+\newcommand{\solution}{\paragraph{Solution}}
+
 
 \title{Solutions for [Book Name]}
 \author{Your Name}
