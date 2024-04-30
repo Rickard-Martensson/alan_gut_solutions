@@ -59,12 +59,15 @@ Another solution here.
 \section{Chapter 3}
 
 \exercise
-Exercise description.
 \subsubsection*{Solution}
-Write your solution here.
 
 \exercise
-Exercise description.
+\subsubsection*{Solution}
+\exercise
+\subsubsection*{Solution}
+\exercise
+\subsubsection*{Solution}
+\exercise
 \begin{enumerate}[label=(\alph*)]
     \item Show that if \( X \sim N(\mu, \sigma^2) \), then \( \mathbb{E}[X] = \mu \) and \( \text{Var}(X) = \sigma^2 \).
     \item Let \( X_1 \sim N(\mu_1, \sigma_1^2) \) and \( X_2 \sim N(\mu_2, \sigma_2^2) \) be independent random variables. Show that \( X_1 + X_2 \) is normally distributed, and find the mean and variance of \( X_1 + X_2 \).
@@ -81,17 +84,17 @@ Exercise description.
 
 \subsubsection*{Solution}
 \begin{enumerate}[label=(\alph*)]
-    \item Given a normal random variable \( X \sim N(\mu, \sigma^2) \), its characteristic function \( \Psi_X(t) \) is expressed as:
+    \item Given a normal random variable \( X \sim N(\mu, \sigma^2) \), its characteristic function \( \psi_X(t) \) is expressed as:
     \[
-    \Psi_X(t) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}.
+    \psi_X(t) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}.
     \]
-    The expected value \( \mathbb{E}[X] \) is the coefficient of \( t \) in the Taylor expansion of \( \Psi_X(t) \) around \( t=0 \), which yields:
+    The expected value \( \mathbb{E}[X] \) is the coefficient of \( t \) in the Taylor expansion of \( \psi_X(t) \) around \( t=0 \), which yields:
     \[
-    \mathbb{E}[X] = \left. \frac{d}{dt}\Psi_X(t) \right|_{t=0} = \mu.
+    \mathbb{E}[X] = \left. \frac{d}{dt}\psi_X(t) \right|_{t=0} = \mu.
     \]
-    To find the variance \( \text{Var}(X) \), we compute the second derivative of \( \Psi_X(t) \) at \( t=0 \):
+    To find the variance \( \text{Var}(X) \), we compute the second derivative of \( \psi_X(t) \) at \( t=0 \):
     \[
-    \text{Var}(X) = \left. \frac{d^2}{dt^2}\Psi_X(t) \right|_{t=0} - (\mu)^2 = \sigma^2.
+    \text{Var}(X) = \left. \frac{d^2}{dt^2}\psi_X(t) \right|_{t=0} - (\mu)^2 = \sigma^2.
     \]
 
     \item Let \( X_1 \sim N(\mu_1, \sigma_1^2) \) and \( X_2 \sim N(\mu_2, \sigma_2^2) \) be independent random variables. To show that the sum \( X_1 + X_2 \) is also normally distributed and to find its parameters, consider their moment generating functions:
@@ -115,13 +118,13 @@ Exercise description.
     This is the MGF of a normal distribution with mean \( \mu_1 + \mu_2 \) and variance \( \sigma_1^2 + \sigma_2^2 \). Therefore, \( X_1 + X_2 \) follows a normal distribution \( N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2) \).
     \item 
 
-    Let \( X \sim N(0, \sigma^2) \). The characteristic function \( \Psi_X(t) \), which also serves as the moment generating function in this context, is given by:
+    Let \( X \sim N(0, \sigma^2) \). The characteristic function \( \psi_X(t) \), which also serves as the moment generating function in this context, is given by:
     \[
-    \Psi_X(t) = e^{\frac{1}{2} \sigma^2 t^2}.
+    \psi_X(t) = e^{\frac{1}{2} \sigma^2 t^2}.
     \]
-    Expanding \( \Psi_X(t) \) using a Taylor series around \( t = 0 \) results in:
+    Expanding \( \psi_X(t) \) using a Taylor series around \( t = 0 \) results in:
     \[
-    \Psi_X(t) = \sum_{n=0}^{\infty} \frac{\frac{1}{2}\sigma^2 t^2}{n!} t^{2n} = 1 + \frac{1}{2}\sigma^2 t^2 + \frac{(\frac{1}{2}\sigma^2 t^2)^2}{2!} + \frac{(\frac{1}{2}\sigma^2 t^2)^3}{3!} + \ldots
+    \psi_X(t) = \sum_{n=0}^{\infty} \frac{\frac{1}{2}\sigma^2 t^2}{n!} t^{2n} = 1 + \frac{1}{2}\sigma^2 t^2 + \frac{(\frac{1}{2}\sigma^2 t^2)^2}{2!} + \frac{(\frac{1}{2}\sigma^2 t^2)^3}{3!} + \ldots
 = 1 + \frac{\sigma^2 t^2}{2 } + \frac{\sigma^4 t^4}{2^2 \cdot 2!} + \frac{\sigma^6 t^6}{2^3 \cdot 3!} + \ldots
     \]
     
@@ -129,11 +132,11 @@ Exercise description.
     \[
     \mathbb{E}[X^{2n+1}] = 0
     \]
-    for all odd powers \( 2n+1 \). This occurs because the derivatives of \( \Psi_X(t) \) at \( t=0 \) for odd orders are zero, as each term in the expansion of \( \Psi_X(t) \) contains even powers.
+    for all odd powers \( 2n+1 \). This occurs because the derivatives of \( \psi_X(t) \) at \( t=0 \) for odd orders are zero, as each term in the expansion of \( \psi_X(t) \) contains even powers.
     
     For even powers, consider the coefficient of \( t^{2n} \) in the Taylor expansion:
     \[
-    \mathbb{E}[X^{2n}] = \left. \frac{d^{2n}}{dt^{2n}} \Psi_X(t) \right|_{t=0} = \left. \frac{d^{2n}}{dt^{2n}} \left( \sum_{k=0}^{\infty} \frac{1}{k!} \left(\frac{1}{2}\sigma^2 t^2\right)^k \right) \right|_{t=0}
+    \mathbb{E}[X^{2n}] = \left. \frac{d^{2n}}{dt^{2n}} \psi_X(t) \right|_{t=0} = \left. \frac{d^{2n}}{dt^{2n}} \left( \sum_{k=0}^{\infty} \frac{1}{k!} \left(\frac{1}{2}\sigma^2 t^2\right)^k \right) \right|_{t=0}
     \]
     
     To see why \( \mathbb{E}[X^{2n}] \) equals \((2n-1)!! \sigma^{2n}\), take the \(2n\)-th derivative:
@@ -142,10 +145,53 @@ Exercise description.
     \]
     This computation correctly reflects the product of the double factorial \((2n-1)!!\) which is the product of all odd numbers up to \((2n-1)\), resulting in:
     \[
-    (2n-1)!! = 1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2n-1).
+    (2n-1)!! = 1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2n-1) \cdot (\sigma^{2n}).
     \]
     
 \end{enumerate}
+
+\exercise
+
+\begin{itemize}
+    \item[(a)] Show that if \( X \sim N(0, 1) \) then \( X^2 \sim \chi^2(1) \) by computing the moment generating function (MGF) of \( X^2 \), that is, by showing that
+    \[
+    \psi_{X^2}(t) = \mathbb{E}[\exp(tX^2)] = \frac{1}{\sqrt{1-2t}} \quad \text{for} \quad t < \frac{1}{2}.
+    \]
+
+    \item[(b)] Show that if \( X_1 \sim N(0, 1) \) and \( X_2 \sim N(0, 1) \) are independent, then \( X_1^2 + X_2^2 \) is distributed as \( \chi^2(2) \) (which is equivalent to an exponential distribution with mean 2).
+\end{itemize}
+
+
+\subsubsection*{Solution}
+
+\begin{enumerate}[label=(\alph*)]
+    \item
+    
+    Begin by recognizing the integral for the MGF:
+    \[
+    \psi_{X^2}(t) = \int_{-\infty}^{\infty} e^{tx^2} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} \, dx = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} e^{x^2(t - \frac{1}{2})} \, dx.
+    \]
+    This integral converges for \(t < \frac{1}{2}\). Transform \( x \) to eliminate the variable change explicitly:
+    \[
+    \frac{d(x\sqrt{1 - 2t})}{dx} = \sqrt{1 - 2t}, \quad dx = \frac{d(x\sqrt{1 - 2t})}{\sqrt{1 - 2t}}
+    \]
+    Substitute directly:
+    \[
+    \psi_{X^2}(t) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\frac{(x\sqrt{1 - 2t})^2}{2}} \frac{d(x\sqrt{1 - 2t})}{\sqrt{1 - 2t}} = \frac{1}{\sqrt{1 - 2t}}.
+    \]
+    The integral of the standard normal density over the transformed variable is 1, leading to the final MGF expression for \( X^2 \).
+    \item[(b)] Given that \(X_1 \sim N(0, 1)\) and \(X_2 \sim N(0, 1)\) are independent, to show that \(X_1^2 + X_2^2\) is distributed as \(\chi^2(2)\), consider the moment generating functions (MGFs) of \(X_1^2\) and \(X_2^2\), which are:
+    \[
+    \psi_{X_1^2}(t) = \psi_{X_2^2}(t) = \frac{1}{\sqrt{1 - 2t}} \quad \text{for} \quad t < \frac{1}{2}.
+    \]
+    Since \(X_1^2\) and \(X_2^2\) are independent, the MGF of their sum, \(X_1^2 + X_2^2\), is the product of their MGFs:
+    \[
+    \psi_{X_1^2 + X_2^2}(t) = \psi_{X_1^2}(t) \cdot \psi_{X_2^2}(t) = \left(\frac{1}{\sqrt{1 - 2t}}\right)^2 = \frac{1}{1 - 2t}.
+    \]
+    This MGF, \(\frac{1}{1 - 2t}\), is the MGF of a \(\chi^2\) distribution with 2 degrees of freedom. The \(\chi^2(2)\) distribution is also known to be equivalent to an exponential distribution with mean 2, confirming the distribution of \(X_1^2 + X_2^2\).
+\
+\end{enumerate}
+
 
 
 % Chapter 4
