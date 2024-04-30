@@ -198,9 +198,70 @@ Another solution here.
 \section{Chapter 4}
 
 \exercise
-Exercise description.
+
+\begin{enumerate}[label=(\alph*)]
+    \item
+    For a Bernoulli random variable \(X \sim \text{Be}(p)\):
+    \[
+    \varphi_{\text{Be}(p)}(t) = q + p e^{it}, \quad \text{where } q = 1-p.
+    \]
+    
+    \item 
+    
+    For a Binomial random variable \(Y \sim \text{Bin}(n,p)\):
+    \[
+    \varphi_{\text{Bin}(n,p)}(t) = (q + p e^{it})^n.
+    \]
+    
+    \item 
+    
+    For a compound Poisson random variable \(Z\) with rate \(\lambda\) and jump size distribution \(C\):
+    \[
+    \varphi_{C}(t) = \frac{p}{1 - q e^{ist}},
+    \]
+    assuming a specific relationship between the parameters \(p\) and \(q\), and \(s\).
+    
+    \item 
+    
+    For a compound Poisson random variable \(W\) with intensity \(m\) and jump size distribution \(P\):
+    \[
+    \varphi_{P \ast \theta(m)}(t) = \exp\left[m(e^{it} - 1)\right].
+    \]
+\end{enumerate}
 \subsubsection*{Solution}
-Write your solution here.
+
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \textbf{Bernoulli Distribution} \(X \sim \text{Be}(p)\):
+    \[
+    \varphi_{\text{Be}(p)}(t) = \mathbb{E}[e^{itX}] = \sum_{x=0}^1 e^{itx} \Pr(X = x) = e^{it \cdot 0} \Pr(X=0) + e^{it \cdot 1} \Pr(X=1) = (1-p) + pe^{it}.
+    \]
+    This is exactly the expression given: \(q + p e^{it}\), where \(q = 1-p\).
+    
+    \item 
+    \textbf{Binomial Distribution} \(Y \sim \text{Bin}(n,p)\):
+    The characteristic function of a sum of independent identically distributed random variables (by the property often called the \emph{factorization property}) is:
+    \[
+    \varphi_{\text{Bin}(n,p)}(t) = [\varphi_{\text{Be}(p)}(t)]^n = (q + pe^{it})^n.
+    \]
+    This uses the property that the characteristic function of the sum of independent random variables is the product of their characteristic functions.
+    
+    \item 
+    \textbf{Compound Poisson Distribution} (Specific Case):
+    \[
+    \varphi_{C}(t) = \mathbb{E}[e^{itC}] = \sum_{x=0}^\infty e^{itx} \Pr(C = x) = \sum_{x=0}^\infty e^{itx} \frac{p q^x}{1-q} = \frac{p}{1-qe^{it}},
+    \]
+    where we used the formula for the sum of a geometric series \(\sum_{x=0}^\infty ar^x = \frac{a}{1-r}\) applied to \(e^{it}\) as \(r\).
+    
+    \item 
+    \textbf{Poisson Distribution}:
+    Assuming a Poisson process with parameter \(\lambda\) and counting the number of events \(N\) with intensity \(m\):
+    \[
+    \varphi_{P \ast \theta(m)}(t) = \mathbb{E}\left[e^{it \sum_{k=1}^N X_k}\right] = \mathbb{E}\left[\prod_{k=1}^N e^{itX_k}\right] = \exp\left[m(e^{it} - 1)\right].
+    \]
+    This follows from the definition of the characteristic function of the Poisson distribution and using the independence of increments \(X_k\). Each \(X_k\) contributes \(e^{it}\) to the product, and the expectation over the Poisson-distributed count \(N\) produces the exponential function.
+    
+\end{enumerate}
 
 \exercise
 Exercise description.
