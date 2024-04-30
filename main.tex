@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{enumitem}
+
+\usepackage{chngcntr}
+
+% Automatic numbering reset for each subsection
+\newcounter{exercise}[subsection]
+\renewcommand{\theexercise}{\thesubsection.\arabic{exercise}}
+
+\newcommand{\exercise}{
+  \refstepcounter{exercise}
+  \subsubsection*{Exercise \theexercise}
+}
+
+\title{Solutions for [Book Name]}
+\author{Your Name}
+\date{\today}
+
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+
+\begin{document}
+
+\maketitle
+
+% Include chapter files
+\include{Chapter1}
+\include{Chapter2}
+\include{Chapter3}
+\include{Chapter4}
+% Add more chapters as needed
+
+\end{document}
