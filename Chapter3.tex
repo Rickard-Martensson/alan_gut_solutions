@@ -386,5 +386,43 @@ It is therefore obvious that \[
 \phi_{C(m, a)} (t) = e^{itm} \cdot \phi_X(at) =e^{itm} \cdot e^{ -\|at \| }  = \exp(itm - \|at\| )
 \] 
 
+
+
+% https://researchers.ms.unimelb.edu.au/~xgge@unimelb/Files/Teaching/Advanced%20Probability%20(Semester%201%202020)/Deriving%20the%20Inversion%20Formula.pdf
+% cool proof inversion formula
+
+\exercise
+Show that if $X, Y$ are iid, then $X-Y$ has a symetric distribution:
+
+\solution
+yet again prove something obvious but with characteristic functions. If $X \stackrel{d}{=} Y$ then 
+
+
+\[
+\phi_{X-Y} (t) = \text{(independent)} =  \phi_X (t) \cdot  \phi_Y(-t) = \text{(equidistributed)} = \phi_X(t) \cdot \phi_X(-t) =   
+\phi_X(t) \cdot \overline{\phi_X(-t)} = \text{real}  
+\]
+
+
+\exercise
+Show that one cannot find i.i.d R.V $X$ and $Y$ such that $X-Y \in U(-1, 1) $ 
+\solution
+
+We know that 
+
+
+\[
+\phi_{X-Y} (t) = \text{(independent)} =  \phi_X (t) \cdot  \phi_Y(-t) = \text{(equidistributed)} = \phi_X(t) \cdot \phi_X(-t) =   
+\phi_X(t) \cdot \overline{\phi_X(-t)} = \| \phi_X (t) \|^2   
+\]
+
+Which is strictly positive, however this does not hold true for 
+\[
+\phi_{U(-1, 1)} = \frac{\sin(t)}{t}    
+\]
+
+
+\vspace*{100pt}
+
 \end{enumerate}
 
