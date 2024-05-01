@@ -365,7 +365,26 @@ E[X] = \frac{1}{\lambda} \hspace{15pt} E[X^2] = \frac{2}{\lambda^2} \hspace*{15p
 E[X] = 0 \hspace*{15pt} \operatorname{Var}(X) = 1
 \]
 
-\end{enumerate}
 
 
+
 \end{enumerate}
+
+\exercise
+\exercise
+\exercise
+Use Theorem 4.9 to show that \( \varphi_{C(m,a)}(t) = e^{itm} \varphi_X(at) = e^{itm - a|t|} \)
+\solution
+Theorem 4.9 states that \[
+\phi_{aX+b} (t) = e^{itb} \cdot \phi_X(at)
+\]
+Physics teaches us that a cauchy distribution is the dist of a $x$-intersect of a random ray going through the point $C(m, a)$
+
+Changing m is the same as moving the intersect by m, and changing a is the same as multiplying the intersect point, taking acount the scaling already done by m.
+
+It is therefore obvious that \[
+\phi_{C(m, a)} (t) = e^{itm} \cdot \phi_X(at) =e^{itm} \cdot e^{ -\|at \| }  = \exp(itm - \|at\| )
+\] 
+
+\end{enumerate}
+
