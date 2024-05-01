@@ -184,18 +184,188 @@
     This uses the property that the characteristic function of the sum of independent random variables is the product of their characteristic functions.
     
     \item 
-    \textbf{Compound Poisson Distribution} (Specific Case):
+    \textbf{Geometric Distribution}:
     \[
-    \varphi_{C}(t) = \mathbb{E}[e^{itC}] = \sum_{x=0}^\infty e^{itx} \Pr(C = x) = \sum_{x=0}^\infty e^{itx} \frac{p q^x}{1-q} = \frac{p}{1-qe^{it}},
+    \varphi_{X}(t) = \mathbb{E}[e^{itX}] = \sum_{x=0}^\infty e^{itx} \Pr(X = x) = \sum_{x=0}^\infty e^{itx} \frac{p q^x}{1-q} = \frac{p}{1-qe^{it}},
     \]
     where we used the formula for the sum of a geometric series \(\sum_{x=0}^\infty ar^x = \frac{a}{1-r}\) applied to \(e^{it}\) as \(r\).
     
-    \item 
-    \textbf{Poisson Distribution}:
-    Assuming a Poisson process with parameter \(\lambda\) and counting the number of events \(N\) with intensity \(m\):
+
+\item 
+\textbf{Compound Poisson Distribution} (\( W \)) with intensity \( m \) and jump size distribution \( P \):
+
+The compound Poisson variable \( W \) can be expressed as \( W = \sum_{k=1}^N X_k \), where \( N \sim \text{Poisson}(m) \) and \( X_k \) are iid random variables from the distribution \( P \). The characteristic function \( \varphi_{W}(t) \) is given by the expectation:
+\[
+\varphi_{W}(t) = \mathbb{E}[e^{itW}].
+\]
+
+Given \( W \) conditioned on \( N \) being equal to \( n \), the sum \( W = X_1 + X_2 + \cdots + X_n \) and the \( X_k \)'s are independent. So, we write:
+\[
+\mathbb{E}[e^{itW} \mid N=n] = \mathbb{E}[e^{it(X_1 + X_2 + \cdots + X_n)}] = \prod_{k=1}^n \mathbb{E}[e^{itX_k}] = (\varphi_P(t))^n,
+\]
+where \( \varphi_P(t) \) is the characteristic function of the distribution \( P \).
+
+The unconditional expectation is:
+\[
+\varphi_{W}(t) = \sum_{n=0}^\infty \mathbb{E}[e^{itW} \mid N=n] \Pr(N = n) = \sum_{n=0}^\infty (\varphi_P(t))^n \frac{e^{-m} m^n}{n!}.
+\]
+Using the Taylor series expansion for the exponential function, we have:
+\[
+\varphi_{W}(t) = e^{-m} \sum_{n=0}^\infty \frac{[m \varphi_P(t)]^n}{n!} = e^{-m} e^{m \varphi_P(t)} = \exp[m(\varphi_P(t) - 1)].
+\]
+
+This directly ties into the idea you suggested, where each \( e^{itx} \) term is weighted by its Poisson probability, which then sums to form the exponential series representation of \( \varphi_{W}(t) \).
+
+
+
+
+\exercise
+\exercise
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate the mean and variance of the Binomial distribution using its characteristic function.
+    \item Calculate the mean and variance of the Poisson distribution using its characteristic function.
+    \item Calculate the mean and variance of the Uniform distribution using its characteristic function.
+    \item Calculate the mean and variance of the Exponential distribution using its characteristic function.
+\end{enumerate}
+
+\solution
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \textbf{Binomial Distribution}:
     \[
-    \varphi_{P \ast \theta(m)}(t) = \mathbb{E}\left[e^{it \sum_{k=1}^N X_k}\right] = \mathbb{E}\left[\prod_{k=1}^N e^{itX_k}\right] = \exp\left[m(e^{it} - 1)\right].
+    \text{Characteristic Function:} \quad \varphi_X(t) = (1-p + pe^{it})^n
     \]
-    This follows from the definition of the characteristic function of the Poisson distribution and using the independence of increments \(X_k\). Each \(X_k\) contributes \(e^{it}\) to the product, and the expectation over the Poisson-distributed count \(N\) produces the exponential function.
-    
+    \text{Expansion of} \( e^{it} \):
+    \[
+    e^{it} \approx 1 + it - \frac{t^2}{2}
+    \]
+    \text{Substitute and apply multinomial theorem:}
+    \[
+    \varphi_X(t) = (1-p + p(1 + it - \frac{pt^2}{2}))^n
+    \]
+    \text{Expand using multinomial coefficients:}
+    \[
+    \varphi_X(t) \approx \sum_{x,y,z}^n \binom{n}{x,y,z} (1-p)^x \left(pit\right)^y \left(-\frac{pt^2}{2}\right)^{z}
+    \]
+    \text{Relevant terms up to} \( t^2 \):
+    \[
+    \varphi_X(t) \approx \binom{n}{n,0,0}(1-p)^n + \binom{n}{n-1,1,0}(1-p)^{n-1}(pit) + \binom{n}{n-2,0,2}(1-p)^{n-2}\left(-\frac{pt^2}{2}\right)
+    \]
+    \text{Mean} \( E[X] \):
+    \[
+    E[X] = np
+    \]
+    \text{Variance} \( \operatorname{Var}(X) \):
+    \[
+    \operatorname{Var}(X) = np(1-p)
+    \]
+
+    \item
+\textbf{Poisson Distribution}:
+\[
+\text{Characteristic Function:} \quad \varphi_X(t) = e^{\lambda (e^{it} - 1)}
+\]
+\text{Expansion of} \( e^{it} \):
+\[
+e^{it} \approx 1 + it - \frac{t^2}{2}
+\]
+\text{Substitute and expand:}
+\[
+\varphi_X(t) = e^{\lambda \left((1 + it - \frac{t^2}{2}) - 1\right)} = e^{\lambda (it - \frac{t^2}{2})}
+\]
+\text{Applying Taylor expansion to} \( e^{\lambda (it - \frac{t^2}{2})} \):
+\[
+\varphi_X(t) \approx 1 + \lambda (it - \frac{t^2}{2}) + \frac{\lambda^2}{2} (it - \frac{t^2}{2})^2 + \ldots
+\]
+\text{Relevant terms up to} \( t^2 \):
+\[
+\varphi_X(t) \approx 1 + (\lambda^2 + \lambda) it - \frac{\lambda t^2}{2}
+\]
+\text{Mean} \( E[X] \):
+\[
+E[X] = \lambda
+\]
+\text{Second moment} \( E[X^2] \):
+\[
+E[X^2] = \lambda^2 - \lambda
+\]
+\text{Variance} \( \operatorname{Var}(X) \):
+\[
+\operatorname{Var}(X) = \lambda
+\]
+
+
+\item
+\textbf{Uniform Distribution}:
+\[
+\text{Characteristic Function:} \quad \varphi_X(t) = \frac{e^{itb} - e^{ita}}{it(b-a)}
+\]
+\text{Expansions of} \( e^{itb} \) \text{and} \( e^{ita} \) (   \text{remember, we will divide by} \(it(b-a) \) \text{so we need terms up to} \(t^3\) ) : 
+\[
+e^{itb} \approx 1 + itb - \frac{t^2b^2}{2} - i\frac{t^3b^3}{6}, \quad e^{ita} \approx 1 + ita - \frac{t^2a^2}{2} - i\frac{t^3a^3}{6}
+\]
+\text{Substitute and simplify:}
+\[
+\varphi_X(t) = \frac{(1 + itb - \frac{t^2b^2}{2}- i\frac{t^3b^3}{6}) - (1 + ita - \frac{t^2a^2}{2}) - i\frac{t^3a^3}{6}}{it(b-a)}
+\]
+\[
+\varphi_X(t) \approx \frac{1}{it(b-a)} \Bigl[ (1-1)+ it(b-a) -\dfrac{t^2}{2}(b^2-a^2) -i\dfrac{t^3}{6}(b^3-a^3) \Bigr] = \Bigl[ 0 + 1 +it\dfrac{b+a}{2}  + \dfrac{t^2}{6} (b^2+a^2 -ab) \Bigr]
+\]
+\text{Relevant terms up to} \( t^2 \):
+\[
+\varphi_X(t) \approx 1 + it\frac{b+a}{2} - \frac{t^2(b^2 + a^2-ab)^2}{6}
+\]
+\text{Mean} \( E[X] \):
+\[
+E[X] = \frac{b+a}{2}
+\]
+\text{Second moment} \( E[X^2] \):
+\[
+E[X] = \frac{b^2+a^2-ab}{3}
+\]
+\text{Variance} \( \operatorname{Var}(X) \):
+\[
+\operatorname{Var}(X) = E[X^2] - E[X]^2 =  \frac{4(b^2+a^2-ab)}{4\cdot3} - \frac{3\cdot(b+a)^2}{3\cdot2^2}  = \frac{(b-a)^2}{12}
+\]
+
+
+\item
+\textbf{Exponential Distribution}:
+\[
+\text{Characteristic Function:} \quad \varphi_X(t) = \frac{1}{1 - it/\lambda}
+\]
+\text{Expand using Gemoretric series}
+\[
+\frac{1}{1-x} = 1 +x + x^2 +x^3... \therefore \varphi_X(t) \approx 1 + it/\lambda + (it/\lambda)^2 + o(t^2)
+\]
+\text{Relevant terms up to} \( t^2 \):
+\[
+\varphi_X(t) \approx 1 + it \dfrac{1}{\lambda} - \frac{t^2}{2} \frac{2}{\lambda^2}
+\]
+\[
+E[X] = \frac{1}{\lambda} \hspace{15pt} E[X^2] = \frac{2}{\lambda^2} \hspace*{15pt} \operatorname{Var}(X) = \frac{1}{\lambda^2}
+\]
+
+
+\item
+\textbf{Standard Normal Distribution}:
+\[
+\text{Characteristic Function:} \quad \varphi_X(t) = e^{-\frac{t^2}{2}}
+\]
+\text{Apply Taylor expansion to} \( e^{-\frac{t^2}{2}} \):
+\[
+\varphi_X(t) \approx 1 - \frac{t^2}{2} + \frac{t^4}{8} - \frac{t^6}{48} + \ldots
+\]
+\text{Relevant terms up to} \( t^2 \):
+\[
+\varphi_X(t) \approx 1 - \frac{t^2}{2}
+\]
+\text{Which yields}:
+\[
+E[X] = 0 \hspace*{15pt} \operatorname{Var}(X) = 1
+\]
+
+\end{enumerate}
+
+
 \end{enumerate}
