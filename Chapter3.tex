@@ -422,6 +422,50 @@ Which is strictly positive, however this does not hold true for
 \]
 
 
+\subsection{Distributions with random parameters}
+
+\exercise
+\begin{enumerate}
+    \item
+    if $M = m$, then $X$ is $Po(m)$-distributed. However, $M$ is $Exp(a)$ distributed. ie
+    \[     X | M = m \sim  Po(m) \text{ with } M \sim Exp(a) 
+    \]
+    Calculate the distribution of $X$
+    \item    \[     X | M = m \sim  Po(m) \text{ with } M \sim \Gamma(p,a) 
+    \]
+    Calculate the distribution of $X$
+\end{enumerate}
+
+\solution
+\begin{enumerate}
+    \item 
+    \[
+        g_X (t) = E \left[ t^X \right] = E \left[ E \left[ t^X |  M \right] \right] = E \left[ g_{Po(M)}(t)\right] = E\left[e^{M(t-1)}\right]
+    \]
+
+    This is a moment generating function, more preciely
+
+    \[
+        E\left[e^{M(t-1)}\right] \sim \psi_{M}(t-1) = \psi_{Exp(a)}(t-1) = \frac{1}{1-a(e^t-1)} = \frac{\dfrac{1}{1+a}}{1-\dfrac{a}{a+1}(e^t-1)} \sim Ge(\dfrac{1}{1+a})
+    \]
+
+ \item
+    
+    \[
+        g_X (t) = E \left[ t^X \right] = E \left[ E \left[ t^X |  M \right] \right] = E \left[ g_{Po(M)}(t)\right] = E\left[e^{M(t-1)}\right]
+    \]
+
+    This is also moment generating function, more preciely
+
+    \[
+        E\left[e^{M(t-1)}\right] \sim \psi_{M}(t-1) = \psi_{\Gamma(p,a)}(t-1) = \frac{1}{(1-at)^p} = \frac{\dfrac{1}{1+a}}{1-\dfrac{a}{a+1}(e^t-1)} \sim Ge(\dfrac{1}{1+a})
+    \]
+
+    \[
+X \sim \text{NegBin}\left(p, \frac{a}{a+1}\right)
+\]
+\end{enumerate}
+
 \vspace*{100pt}
 
 \end{enumerate}
