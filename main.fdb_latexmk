@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1714596101.59771 "/home/rickard/Code/latex/alan_gut_solutions/main.tex" "main.pdf" "main" 1714596102.1395 0
+["pdflatex"] 1714597419.7084 "/home/rickard/Code/latex/alan_gut_solutions/main.tex" "main.pdf" "main" 1714597420.16361 0
   "/home/rickard/Code/latex/alan_gut_solutions/main.tex" 1714496241.40734 876 0a40e37cd61160feed70f38a355c89f5 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1713199481 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1713199481 1004 54797486969f23fa377b128694d548df ""
@@ -64,15 +64,15 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1713199481 41588 b43d3e860a4f94167ee1e725ff526a72 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1714420224.74224 5312047 b07fcd2a9090df96fc745b92a3db793b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1714420137 7112989 4f1d7fcc597e4134f23734b0465ac018 ""
-  "Chapter1.aux" 1714596102.00697 1039 601daf3a06768fde6bb99855570f8084 "pdflatex"
+  "Chapter1.aux" 1714597420.05259 1039 601daf3a06768fde6bb99855570f8084 "pdflatex"
   "Chapter1.tex" 1714496141.90207 282 61231b6e0a3b7e8bfc3a2f2d44c8a49e ""
-  "Chapter2.aux" 1714596102.01364 1039 d6b0debee8bb1c1a2fe131d0f4a72c13 "pdflatex"
+  "Chapter2.aux" 1714597420.05593 1039 d6b0debee8bb1c1a2fe131d0f4a72c13 "pdflatex"
   "Chapter2.tex" 1714496261.35773 282 61231b6e0a3b7e8bfc3a2f2d44c8a49e ""
-  "Chapter3.aux" 1714596102.06031 1722 5e475a51d8cd69a1f5b3acbcd862448e "pdflatex"
-  "Chapter3.tex" 1714596101.2203 17876 e0d1478100fc8105bdbcc9632afaf449 ""
-  "Chapter4.aux" 1714596102.06364 480 978ed9c5def5c07437a8538135c13a82 "pdflatex"
+  "Chapter3.aux" 1714597420.09926 1722 9e8b9b32a3f6ca08943bc31fa2ee13d0 "pdflatex"
+  "Chapter3.tex" 1714597419.39592 17968 73a1253febd86866adc888366be0467b ""
+  "Chapter4.aux" 1714597420.1026 480 69b8c44527efc054fa7f41130ff500b7 "pdflatex"
   "Chapter4.tex" 0 -1 0 ""
-  "main.aux" 1714596102.06364 121 556a6282817db5051462fcd6f4120d9c "pdflatex"
+  "main.aux" 1714597420.1026 121 3f51fdb2ede2e15958e59961d2484ccc "pdflatex"
   "main.tex" 1714496241.40734 876 0a40e37cd61160feed70f38a355c89f5 ""
   (generated)
   "Chapter1.aux"
