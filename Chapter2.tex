@@ -13,8 +13,49 @@ Exercise description.
 Another solution here.
 
 \subsection{Advanced Topics}
+\subsection{Distributions with random parameters}
 
+\exercise
+\exercise
 \exercise
 Exercise description.
 \solution
+
+% Definition of the distributions
+Let \( X \) have a conditional normal distribution given \( I \) as follows:
+\[
+X \mid I \sim N(0, 1/I)
+\]
+with \( I \) following a gamma distribution:
+\[
+I \sim \Gamma\left(\frac{n}{2}, \frac{2}{n}\right)
+\]
+
+% Density functions
+The density functions are:
+\[
+f_I(i) = \frac{\left(\frac{n}{2}\right)^{\frac{n}{2}}}{\Gamma\left(\frac{n}{2}\right)} i^{\frac{n}{2} - 1} e^{-\frac{ni}{2}}
+\]
+\[
+f_{X|I}(x \mid i) = \sqrt{\frac{i}{2\pi}} e^{-\frac{ix^2}{2}}
+\]
+
+% Marginal distribution of X
+The marginal distribution of \( X \) is obtained by integrating out \( I \):
+\[
+f_X(x) = \int_0^\infty f_{X|I}(x \mid i) f_I(i) \, di
+\]
+\[
+f_X(x) = \int_0^\infty \sqrt{\frac{i}{2\pi}} e^{-\frac{ix^2}{2}} \frac{\left(\frac{n}{2}\right)^{\frac{n}{2}}}{\Gamma\left(\frac{n}{2}\right)} i^{\frac{n}{2} - 1} e^{-\frac{ni}{2}} \, di
+\]
+\[
+f_X(x) = \frac{n^{n/2} (n + x^2)^{-n/2 - 1/2} \Gamma\left(\frac{n}{2} + \frac{1}{2}\right)}{\sqrt{\pi} \Gamma\left(\frac{n}{2}\right)}
+\]
+Simplifying the expression, we obtain the PDF of a Student's t-distribution:
+\[
+f_X(x) = \frac{\Gamma\left(\frac{n+1}{2}\right)}{\sqrt{n\pi} \Gamma\left(\frac{n}{2}\right)} \left(1 + \frac{x^2}{n}\right)^{-\frac{n+1}{2}}
+\]
+
+% Conclusion
+Thus, \( X \) is distributed as \( t(n) \).
 Write your solution here.

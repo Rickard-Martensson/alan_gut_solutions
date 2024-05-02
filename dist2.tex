@@ -1,0 +1,207 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{pdflscape}
+\usepackage{geometry}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\geometry{left=1cm,right=1cm,top=1.5cm,bottom=1.5cm} % Adjust margins as needed
+
+\begin{document}
+
+\begin{landscape}
+    \begin{table}[ht]
+        \centering
+        \caption{Summary of Discrete Distributions}
+        \label{tab:probability_distributions}
+        
+        \begin{tabular}{@{}l p{6.0cm} p{5cm} p{3.0cm} r@{}}
+        \toprule
+        Distribution, notation & Density Function & Cumulative Distribution & Statistics & Generating Functions \\ 
+        \midrule
+
+    
+        $\begin{array}{l}
+            \textbf{One point} \\
+            \delta(a) \\
+    \end{array}$ & 
+    $\begin{array}{l}
+    \displaystyle p(a) = 1\\
+    \end{array}$ & 
+    $\begin{array}{l}
+        \displaystyle F_X(k) = 0, \text{if } a < 0\\
+        \displaystyle F_X(k) = q, \text{if } a \geq 0 \\
+    \end{array}$ & 
+    $\begin{array}{l}
+    \displaystyle \hspace{0.45cm}  E[X] = a \\
+    \displaystyle Var(X) = 0
+    \end{array}$ & 
+    $\begin{array}{r}
+    \displaystyle g_X(t) = ta \\
+    \displaystyle \psi_X(t) = e^{ta} \\
+    \displaystyle \varphi_X(t) = e^{ita}
+    \end{array}$ \\
+    \multicolumn{4}{p{19cm}}{Pretentious to have this, i know, but i guess it needs to be complete or whatevs} \\
+
+
+        $\begin{array}{l}
+            \textbf{Bernoulli} \\
+            B(p) \\
+            0 \leq p \leq 1
+    \end{array}$ & 
+    $\begin{array}{l}
+    \displaystyle p(0) = q, p(1) = p; q = 1-p\\
+    \end{array}$ & 
+    $\begin{array}{l}
+        \displaystyle F_X(k) = 0, \text{if } k < 0\\
+        \displaystyle F_X(k) = q, \text{if } 0\leq k < 1 \\
+        \displaystyle F_X(k) = 1, \text{if } k \geq 1 \\
+    \end{array}$ & 
+    $\begin{array}{l}
+    \displaystyle \hspace{0.45cm}  E[X] = \frac{q}{p} \\
+    \displaystyle Var(X) = \frac{q}{p^2}
+    \end{array}$ & 
+    $\begin{array}{r}
+    \displaystyle g_X(t) = q+pt \\
+    \displaystyle \psi_X(t) = q+pe^{t} \\
+    \displaystyle \varphi_X(t) = q+pe^{it}
+    \end{array}$ \\
+    \multicolumn{4}{p{19cm}}{Lorem ipsum} \\
+    
+    
+        $\begin{array}{l}
+                \textbf{Geometric} \\
+                G(p) \\
+                0 \leq p \leq 1
+        \end{array}$ & 
+        $\begin{array}{l}
+        \displaystyle p(k) = p q^{k}, k = 0,1,2... ; q = 1-p\\
+        \end{array}$ & 
+        $\begin{array}{l}
+            \displaystyle F_X(x) = 1 - q^{\floor{x} + 1}
+        \end{array}$ & 
+        $\begin{array}{l}
+        \displaystyle \hspace{0.45cm}  E[X] = \frac{q}{p} \\
+        \displaystyle Var(X) = \frac{q}{p^2}
+        \end{array}$ & 
+        $\begin{array}{r}
+        \displaystyle g_X(t) = \frac{p}{1-qt} \\
+        \displaystyle \psi_X(t) = \frac{p}{1-qe^{t}} \\
+        \displaystyle \varphi_X(t) = \frac{p}{1-qe^{it}}
+        \end{array}$ \\
+        \multicolumn{4}{p{19cm}}{Lorem ipsum} \\
+        
+        $\begin{array}{l}
+            \textbf{First success} \\
+            G(p) \\
+            0 \leq p \leq 1
+    \end{array}$ & 
+    $\begin{array}{l}
+    \displaystyle p(k) = p q^{k-1}, k = 1,2... ; q = 1-p\\
+    \end{array}$ & 
+    $\begin{array}{l}
+        \displaystyle F_X(x) = 1 - q^{\floor{x}}
+    \end{array}$ & 
+    $\begin{array}{l}
+    \displaystyle \hspace{0.45cm}  E[X] = \frac{q}{p} \\
+    \displaystyle Var(X) = \frac{q}{p^2}
+    \end{array}$ & 
+    $\begin{array}{r}
+    \displaystyle g_X(t) = \frac{pt}{1-qt} \\
+    \displaystyle \psi_X(t) = \frac{pe^{t}}{1-qe^{t}} \\
+    \displaystyle \varphi_X(t) = \frac{pe^{it}}{1-qe^{it}}
+    \end{array}$ \\
+    \multicolumn{4}{p{19cm}}{Identical to Geometric, but always 1 larger} \\
+        
+        \bottomrule
+        \end{tabular}
+        \end{table}
+
+
+\begin{table}[ht]
+\centering
+\caption{Summary of Probability Distributions}
+\label{tab:probability_distributions}
+
+\begin{tabular}{@{}l p{6.0cm} p{5cm} p{3.0cm} r@{}}
+\toprule
+Distribution, notation & Density Function & Cumulative Distribution & Statistics & Generating Functions \\ 
+\midrule
+$\begin{array}{l}
+        \textbf{Normal} \\
+        \mathcal{N}(\mu, \sigma^2) \\
+        \sigma > 0
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle f_X(x) = \frac{1}{\sqrt{2\pi \sigma^2}} exp \Bigl\{  -\frac{1}{2} \frac{(x-\mu)^2}{\sigma^2}\Bigr\}\\
+\end{array}$ & 
+$\begin{array}{l}
+    \displaystyle F_X(x) = \Phi \left(\frac{x-\mu}{\sigma}\right)
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle \hspace{0.45cm}  E[X] = \mu \\
+\displaystyle Var(X) = \sigma^2
+\end{array}$ & 
+$\begin{array}{r}
+\displaystyle \psi_X(t) = e^{t\mu + \frac{1}{2} \sigma^2 t^2} \\
+\displaystyle \varphi_X(t) = e^{it\mu - \frac{1}{2} \sigma^2 t^2}
+\end{array}$ \\
+\multicolumn{4}{p{19cm}}{The Normal distribution is central to the central limit theorem} \\
+
+
+
+$\begin{array}{l}
+    \textbf{Gamma} \\
+    \Gamma(p, a) \\
+    a > 0, p > 0
+\end{array}$ & 
+
+$\begin{array}{l}
+\displaystyle f_X(x) = \frac{1}{\Gamma(p)} x^{p-1} \frac{1}{a^p} e^{-x/a} \\
+\end{array}$ & 
+$\begin{array}{l}
+    \displaystyle F_X(x) = \frac{1}{\Gamma(p)} \gamma \left(p, \frac{x}{a}\right)
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle \hspace{0.45cm} E[X] = pa \\
+\displaystyle Var(X) = pa^2
+\end{array}$ & 
+$\begin{array}{r}
+\displaystyle \psi_X(t) = \frac{1}{(1 - a t)^{p}} \\
+\displaystyle \varphi_X(t) = \frac{1}{(1 - a it)^{p}}
+\end{array}$ \\
+\multicolumn{4}{p{19cm}}{Gamma is crucial in modeling waiting times and life data.} \\
+
+
+$\begin{array}{l}
+    \textbf{(Student's) t} \\
+    t(n) \\
+    n = 1, 2,...
+\end{array}$ & 
+
+$\begin{array}{l}
+\displaystyle f_X(x) = \frac{\Gamma\left(\frac{n+1}{2}\right)}{\sqrt{\pi n} \Gamma\left(\frac{n}{2}\right)} \left(1+\frac{x^2}{n}\right)^{-\frac{n+1}{2}} \\
+\end{array}$ & 
+$\begin{array}{l}
+    \displaystyle No. \\
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle \hspace{0.45cm} E[X] = 0 \\
+\displaystyle Var(X) = \frac{n}{n-2}, n>2\\
+\end{array}$ & 
+$\begin{array}{r}
+\displaystyle \psi_X(t) = undefined \\
+\displaystyle \varphi_X(t) = No.
+\end{array}$ \\
+\multicolumn{4}{p{19cm}}{Student t is crucial in modeling waiting times and life data.} \\
+
+
+\bottomrule
+\end{tabular}
+\end{table}
+\end{landscape}
+
+\end{document}

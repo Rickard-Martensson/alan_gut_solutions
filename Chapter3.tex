@@ -471,6 +471,64 @@ X \sim \text{NegBin}\left(p, \frac{1}{a+1}\right)
 \begin{enumerate}
     \item $X$ is $N(0,1/ \Sigma^2)$ distributed, where $\Sigma^2$ is $\Gamma(\frac{n}{2} , \frac{2}{n}) $ distributed
 \end{enumerate}
+
+
+\solution
+Really don't know how to do it since they dont provide the MGF for Student t
+
+
+
+\subsection{Sums of a Random Number of Random Numbers}
+
+\exercise
+Compute $E[S_N^2] $ and prove $Var(S_N) = E[N] \cdot Var(X) + E[X]^2 \cdot Var(N)$ .
+
+\solution
+
+\[
+    E S_N^2 = \sum E(S_N^2 | N = n) \cdot P(N=n) = \sum E(S_n^2) \cdot P(N=n) = \sum E[(X_1 + ... X_n)^2] \cdot P(N=n) =
+\]
+\[
+    \sum \biggl(E[X^2] \cdot  n + E[X]^2 \cdot n(n-1) \biggr) P(N=n) = E[X^2]\sum n \cdot P(N=n) + E[X]^2 \sum (n^2-n)P(N=n)
+\]
+\[
+  E[X^2]E[N]  + E[X]^2(E[N^2] - E[N])
+\]
+We know that \(Var(S_N) = E[S_N^2]-E[S_N]^2\), and using the result from (a) we get
+\[
+    Var(S_N) = E[X^2]E[N]  +E[X]^2(E[N^2] - E[N]) - E[X]^2 E[N]^2
+\]
+Rearanging gives us:
+\[
+    Var(S_N) = E[N](E[X^2] - E[X]^2)  +E[X]^2(E[N^2] - E[N]^2) = E[N]Var(X)+E[X^2]Var(N) 
+\]
+
+\exercise
+Charlie bets on 13 on a $(0,1...36)$ roulette table untill they win ($N$ times), and then bets $N$ times again on 36 in the second round. Find the generating function of their loss in the second round
+Also find it for the the overall loss
+
+\solution
+Let \(X = Y_1 + ... Y_n\) where $N \sim F(\frac{1}{37})$. First lets calculate $g_Y(t)$:
+
+
+\[
+    g_Y(t) = E[t^Y] = \sum t^y P(Y=y) = t^1 \frac{36}{37} + t^{-35} \frac{1}{37}
+\]
+Knowing that $N$ the number of plays until a win is First time-distributed, we get
+\[
+    g_X(t) = g_N(g_Y(t)) = g_N(t \frac{36}{37} + t^{-35} \frac{1}{37}) = \frac{p(t \frac{36}{37} + t^{-35} \frac{1}{37})}{1-q(t \frac{36}{37} + t^{-35} \frac{1}{37})} = \frac{\frac{1}{37}(36t + t^{-35} )}{37-\frac{36}{37}(36t + t^{-35} )}
+     \]
+
+As a sanity check, the we can take its derivative and make sure the expected loss is 1.
+\[ 
+    \frac{\frac{1}{37}(36 + -35 \cdot 1 )}{37-\frac{36}{37}(36 + -35 \cdot 1)} = 1
+\]
+
+For the first round, Charlie will lose 1 dollar untill they win, and get 35 dollars, ie $L = Y_1 + Y_2 +... Y_N -36$ where $Y_k = 1$. ie the loss $L$ if they play $n$ times is $L = n-36$ dollars. $N$ is still $F(\frac{1}{37})$-distributed
+\[
+    g_L(t) = g_{N-36}(g_Y(t)) = g_{N-36}(t) = t^{-36}g_N(t) = t^{-36} \frac{\frac{1}{37}}{1 -\frac{36}{37}t}
+\]
+Evaluating its derivative when $t=1$ yields the expected loss is 1 here too. Because of linearity of expectation, despite these being obviously dependent, the final loss is still just these added up.
 \vspace*{100pt}
 
 \end{enumerate}

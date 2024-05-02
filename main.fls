@@ -98,12 +98,6 @@ OUTPUT Chapter2.aux
 INPUT ./Chapter2.tex
 INPUT ./Chapter2.tex
 INPUT Chapter2.tex
-INPUT ./Chapter3.tex
-INPUT ./Chapter3.tex
-OUTPUT Chapter3.aux
-INPUT ./Chapter3.tex
-INPUT ./Chapter3.tex
-INPUT Chapter3.tex
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
@@ -112,6 +106,12 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT ./Chapter3.tex
+INPUT ./Chapter3.tex
+OUTPUT Chapter3.aux
+INPUT ./Chapter3.tex
+INPUT ./Chapter3.tex
+INPUT Chapter3.tex
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 OUTPUT Chapter4.aux
 INPUT main.aux
