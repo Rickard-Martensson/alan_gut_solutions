@@ -579,7 +579,26 @@ Using the property of \(\psi_{S_N}(t) = g_N(\psi_{X}(t))\), prove;
 \end{enumerate}
 
 
+\exercise
+Prove that \(\varphi_{S_N}(t) = g_N(\varphi_X(t))\)
 
+\solution
+\[
+    \varphi_{S_N}(t) = E[e^{itS_N}] = \sum E[e^{itS_N} | N = n] P(N=n) = \sum E[e^{itS_n} | N = n] P(N=n) = \sum E[e^{itS_n}] P(N=n)
+\]
+\[
+    \sum E[e^{itS_n}]P(N=n)   = \sum E[e^{it(X_1+X_2 + ... X_n)}]P(N=n) = \sum E[\bigl(e^{it(X)}\bigr)^n]P(N=n) = \sum E[e^{it(X)}]^nP(N=n)
+\]
+\[
+    \sum \varphi_X(t)^n P(N=n) = E[\varphi_X(t)^N]   = g_N(\varphi_X(t))
+\]
+
+
+\exercise
+Use the result from 6.4 do do exercise 6.3 again.
+
+\solution
+Im so fucking tired ok fine ill do it. No actually i wont, its literally just 6.3 but keep the $-$ signs in mind
 
 \end{enumerate}
 
