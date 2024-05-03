@@ -531,5 +531,55 @@ For the first round, Charlie will lose 1 dollar untill they win, and get 35 doll
 Evaluating its derivative when $t=1$ yields the expected loss is 1 here too. Because of linearity of expectation, despite these being obviously dependent, the final loss is still just these added up.
 \vspace*{100pt}
 
+\exercise
+Using the property of \(\psi_{S_N}(t) = g_N(\psi_{X}(t))\), prove;
+
+\begin{enumerate}
+    \item \(E[S_N] = E[N]E[X]\)
+    \item \(Var(S_N) = E[N]Var[X] + E[X]^2Var[N]\)
+\end{enumerate}
+
+\solution
+
+\begin{enumerate}
+    \item The expectation $E[S_N]$ is obtained by taking the first derivative of $\psi_{S_N}(t)$ with respect to $t$ and then evaluating at $t=0$:
+    \[
+    E[S_N] = \left.\frac{d}{dt}\psi_{S_N}(t)\right|_{t=0} = \left.\frac{d}{dt} g_N(\psi_X(t))\right|_{t=0}.
+    \]
+    Applying the chain rule, we get:
+    \[
+    E[S_N] = g_N'(\psi_X(0)) \cdot \psi_X'(0).
+    \]
+    Since $\psi_X(0) = 1$ and knowing that $\psi_X'(0) = E[X]$ (from the properties of MGFs),
+    \[
+    E[S_N] = g_N'(1) \cdot E[X].
+    \]
+    The first derivative of $g_N(1) = E[N]$  hence
+    \[
+    E[S_N] = E[N] \cdot E[X] = E[N]E[X].
+    \]
+
+    \item The variance $Var(S_N)$ is obtained by the second derivative of $\psi_{S_N}(t)$:
+    \[
+    Var(S_N) = \left.\frac{d^2}{dt^2}\psi_{S_N}(t)\right|_{t=0}.
+    \]
+    Applying the chain rule,
+    \[
+    \frac{d^2}{dt^2}\psi_{S_N}(t) = g_N''(\psi_X(t)) \cdot (\psi_X'(t))^2 + g_N'(\psi_X(t)) \cdot \psi_X''(t).
+    \]
+    Evaluating at $t = 0$ and using $\psi_X(0) = 1$, $\psi_X'(0) = E[X]$, and $\psi_X''(0) = E[X^2]$,
+    \[
+    Var(S_N) = g_N''(1) \cdot (E[X])^2 + g_N'(1) \cdot (E[X^2]).
+    \]
+    Since $g_N'(t) = E[Nt^{N-1}]$ and $g_N''(t) = E[N(N-1)t^{N-2}]$, when $t=0$ we get
+    \[
+    Var(S_N) = E[N(N-1)] \cdot (E[X]^2) + E[N] \cdot (E[X^2]) =E[X^2](E[N^2] -E[N]^2) +E[N](E[X^2]- E[X]^2) 
+    \]
+    Simplifying yields \(E[N]Var[X] + E[X]^2Var[N].\)
+\end{enumerate}
+
+
+
+
 \end{enumerate}
 
