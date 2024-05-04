@@ -788,11 +788,157 @@ Since:
 We conclude that $X \overset{d}{=} Y_1 - Y_2$, indicating that they are equidistributed.
 
 
-\setcounter{problem}{42}
+\setcounter{problem}{21}
+\problem 
+Let \( N, X_1, X_2, \dots \) be independent random variables such that 
+\( N \sim \text{Po}(1) \) and \( X_k \sim \text{Po}(2) \) for all \( k \). 
+Define \( Z = \sum_{k=1}^N X_k \) (and \( Z = 0 \) when \( N = 0 \)). Compute
+\begin{enumerate}
+    \item \( E(Z) \)
+    \item\( \text{Var}(Z) \) 
+    \item \( P(Z = 0) \)
+\end{enumerate}
 
+\solution
+We know that \[
+    g_Z(t) = g_N(g_X(t)) = g_N(e^{2(t-1)}) = \exp\{e^{2(t-1)}-1\}\]
 
-
+\begin{enumerate}
+    \item \[EZ =  g_Z'(1) = \exp\{e^{2(1-1)}-1\} \cdot e^{2(1-1)} \cdot 2 = e^0 e^0 2 = 2
+     \] Or we can use theorem 6.2
+     \[
+        E[S_N] = E[N] E[X] = 2\cdot1 = 2
+     \]
+     \item \[
+        Var(S_N) = E[N]Var(X)+E[X]^2Var(N) = 1\cdot2 + 4\cdot1 = 6
+     \]
+     \item \[ P(Z=0) = g_Z(0) =   \exp\{e^{2(0-1)}-1\}  = exp\{e^{-2}-1\} \]
+\end{enumerate}
 % Set the counter to 42 before the first problem
+\setcounter{problem}{25}
+
+\problem
+Same as before, passangers in cars. $B\sim Po(b)$, $P\sim Po(p)$. $Y\sim$ number of passangers in an hour. Calculate:
+\begin{enumerate}
+    \item \( g_Y(t) \)
+    \item\( \text{E}(Z) \) 
+    \item\( \text{Var}(Z) \) 
+\end{enumerate}
+\solution
+\begin{enumerate}
+    \item \[
+      g_Y(t) = g_B(g_P(t)) = g_B(e^{p(t-1)}) = \exp\{b(e^{p(t-1)} - 1)\}  
+    \]
+    \item
+     \[
+        E[Y] = E[B] E[P] = bp
+     \]
+     \item \[
+        Var(Y) = E[B]Var(P)+E[P]^2Var(B) = bp + bp^2 = bp(1+p)
+     \]
+\end{enumerate}
+Also, interesting that the number of passangers is $Po(p)$, it suggests the possibility of having 0 passangers in a car. Driverless cars, the future is now i guess hehe.
+\problem
+\problem
+ Lisa shoots at a target. The probability of a hit in each shot is $\frac{1}{2}$. 
+ Given a hit, the probability of a bull's-eye is $p$. She shoots until she misses the target.
+  Let $S_N$ be the total number of bull's-eyes Lisa has obtained when she has finished shooting,
+  find its distribution.
+
+\solution
+Yet another problem yet exactly the same. Since she wont have a bulls-eye when she misses, $N \sim G(1/2)$
+
+\[
+  g_{S_N} = g_N(g_X(t)) = g_N(q+pt) = \frac{.5}{1-.5(q+pt)} = \frac{1}{2-(1-p + pt)} = \frac{1/(p+1)}{1-p/(p+1) t}  = \psi_{G(1/p+1)(t)}
+\]
+
+
+
+\problem
+
+\problem 
+Philip throws a fair die until he obtains a four.
+ Diane then tosses a coin as many times as Philip
+  threw his die. Determine the expected value and variance of the number of.
+\begin{enumerate}
+    \item heads
+    \item tails
+    \item heads and tails obtained by Diane
+\end{enumerate}
+\solution
+Let $N \sim F(1/6)$ be $\#$Philips throws, $X_k \sim Be(0.5)$ be the $k$:th coinflip and $S_N = X_1 + ... X_N$.
+\begin{enumerate}
+    \item \[
+        E[S_N] = E[N]E[X] = 6\cdot.5 = 3
+    \]
+    \[
+        Var(S_N) = E[N]Var(X) + E[X^2]Var(N) = 6\cdot0.25 + 0.25\cdot\frac{5/6}{(1/6)^2} =9
+        \]
+    \item same as (a) by symetry
+    \item since were counting both heads and tails, its the same as just counting all coinflips, ie how many dice rolls Philip makes
+    \[
+      E[N] = 2\cdot3 = 6\text{(linearity of expectation)} \]
+       \[
+      Var(N) = \frac{5/6}{(1/6)^2}  = 30
+    \]
+\end{enumerate}
+\setcounter{problem}{34}
+
+\problem
+Suppose that the offspring distribution in a branching process is $Ge(p)$-distributed, and let $X(n)$ be the number of individuals in generation $n, n=0,1,2...$.
+
+\begin{enumerate}
+    \item Whats the probability of extinction
+    \item Find the prob that $X(2) = 0$
+\end{enumerate}
+
+\solution
+
+\begin{enumerate}
+    \item The solutions will be $t=g_{Ge(p)}(t)$, ie \[
+    t = \frac{p}{1-qt} = \frac{1-q}{1-qt} \rightarrow 1-q = t(1-qt) \rightarrow t_1 = 1, t_2 = \frac{p}{q}    
+    \] So, if $E[X] \leq 1$ it will be $1$, otherwise it will be $p/q$
+    \item Probability of being extinct by $n=2$ is $P(X(2) = 0)$. \[
+        P(X(2) = 0) = g_{X(2)}(0) = g_X(g_X(0)) = g_X\Bigl(\frac{p}{1-q \cdot 0}\Bigr) = \frac{p}{1-qp}
+    \]
+\end{enumerate}
+\problem
+
+\problem
+Consider a branching process $\{X_n\}$ with offspring probabilities given by the table below:
+\begin{center}
+\begin{tabular}{c|c|c|c}
+    $k$ & 0 & 1 & 2 \\ 
+\hline
+$p_k$ & $\frac{1}{6} $&$ \frac{1}{3}$ & $\frac{1}{2}$ \\ 
+    
+\end{tabular}
+\end{center}
+\begin{enumerate}
+\item Determine the prob of extinction
+\item Probability of the peopulation being extinct in the $2$nd generation
+\item The expected number of children given there are no grandchildren
+
+\end{enumerate}
+
+
+\solution
+\begin{enumerate}
+    \item \[
+    t = \frac{1}{6}t^0 + \frac{1}{3}t + \frac{1}{2}t^2 \rightarrow t_1=1, t_2=\frac{1}{3}
+    \]    
+    \item \[
+    g_X(t) = E[t^X] = \frac{t^0}{6} + \frac{t}{3} + \frac{t^2}{2} 
+    \]
+    \[
+        g_{X(2)}(0) = g_X(g_X(0)) = g_X\Bigl(\frac{1}{6}\Bigr) = \frac{1}{6} + \frac{1}{18} + \frac{1}{72} = \frac{12+4+1}{72} = \frac{17}{72}     
+    \]
+\end{enumerate}
+
+
+
+
+
 \setcounter{problem}{42}
 
 \problem Consider a branching process with a Poisson-distributed offspring with mean \( m \). Let \( X(1) \) and \( X(2) \) be the number of individuals in generations 1 and 2, respectively. Determine the generating function of:
