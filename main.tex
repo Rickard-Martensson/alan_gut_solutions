@@ -16,6 +16,17 @@
 }
 \newcommand{\solution}{\paragraph{Solution}}
 
+\newcounter{problem}[subsection]  % Reset problem counter at every new subsection
+\renewcommand{\theproblem}{\arabic{problem}}  % Numbering format to only show subsection and problem number
+
+\newcommand{\problem}{
+  \refstepcounter{problem}
+  \subsubsection*{Problem \theproblem}
+}
+% \newcommand{\solution}{\paragraph{Solution}}
+
+
+
 
 \title{Solutions for [Book Name]}
 \author{Your Name}

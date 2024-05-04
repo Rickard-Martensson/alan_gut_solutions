@@ -18,9 +18,9 @@
         \caption{Summary of Discrete Distributions}
         \label{tab:probability_distributions}
         
-        \begin{tabular}{@{}l p{6.0cm} p{5cm} p{3.0cm} r@{}}
+        \begin{tabular}{@{}l p{6.5cm} p{4.5cm} p{3.0cm} r@{}}
         \toprule
-        Distribution, notation & Density Function & Cumulative Distribution & Statistics & Generating Functions \\ 
+        Distribution, notation & Probability Function & Cumulative Distribution & Statistics & Generating Functions \\ 
         \midrule
 
     
@@ -36,8 +36,8 @@
         \displaystyle F_X(k) = q, \text{if } a \geq 0 \\
     \end{array}$ & 
     $\begin{array}{l}
-    \displaystyle \hspace{0.45cm}  E[X] = a \\
-    \displaystyle Var(X) = 0
+    \displaystyle \hspace{0.36cm}  EX = a \\
+    \displaystyle VarX = 0
     \end{array}$ & 
     $\begin{array}{r}
     \displaystyle g_X(t) = ta \\
@@ -61,8 +61,8 @@
         \displaystyle F_X(k) = 1, \text{if } k \geq 1 \\
     \end{array}$ & 
     $\begin{array}{l}
-    \displaystyle \hspace{0.45cm}  E[X] = \frac{q}{p} \\
-    \displaystyle Var(X) = \frac{q}{p^2}
+    \displaystyle \hspace{0.36cm}  EX = p \\
+    \displaystyle VarX = pq
     \end{array}$ & 
     $\begin{array}{r}
     \displaystyle g_X(t) = q+pt \\
@@ -71,7 +71,54 @@
     \end{array}$ \\
     \multicolumn{4}{p{19cm}}{Lorem ipsum} \\
     
+
+    $\begin{array}{l}
+        \textbf{Binomial} \\
+        B(n,p) \\
+        n = 1,2,...;0 \leq p \leq 1
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle p(k) = \binom{n}{k} p^kq^{n-k} ; k = 0,1,...n; q = 1-p
+\end{array}$ & 
+$\begin{array}{l}
+    {\displaystyle I_{q}(n-\lfloor k\rfloor ,1+\lfloor k\rfloor )} 
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle \hspace{0.36cm}  EX = np \\
+\displaystyle VarX =  npq
+\end{array}$ & 
+$\begin{array}{r}
+\displaystyle g_X(t) = (q+pt)^n \\
+\displaystyle \psi_X(t) = (q+pe^{t})^n \\
+\displaystyle \varphi_X(t) = (q+pe^{it})^n
+\end{array}$ \\
+\multicolumn{4}{p{19cm}}{Lorem ipsum} \\
+
     
+$\begin{array}{l}
+    \textbf{Poisson} \\
+    Po(\lambda) \\
+    \lambda > 0
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle p(k) = \frac{\lambda^k}{k!} e^{-\lambda}, k = 0,1,2...\\
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle F_X(x) = 1 - q^{\floor{x} + 1}
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle \hspace{0.36cm}  EX = \lambda \\
+\displaystyle VarX = \lambda
+\end{array}$ & 
+$\begin{array}{r}
+\displaystyle g_X(t) = exp\{t-1\} \\
+\displaystyle \psi_X(t) =  exp\{ e^t-1\} \\
+\displaystyle \varphi_X(t) = exp\{ e^{it}-1\}
+\end{array}$ \\
+\multicolumn{4}{p{19cm}}{Lorem ipsum} \\
+
+
+
         $\begin{array}{l}
                 \textbf{Geometric} \\
                 G(p) \\
@@ -84,8 +131,8 @@
             \displaystyle F_X(x) = 1 - q^{\floor{x} + 1}
         \end{array}$ & 
         $\begin{array}{l}
-        \displaystyle \hspace{0.45cm}  E[X] = \frac{q}{p} \\
-        \displaystyle Var(X) = \frac{q}{p^2}
+        \displaystyle \hspace{0.36cm}  EX = \frac{q}{p} \\
+        \displaystyle VarX = \frac{q}{p^2}
         \end{array}$ & 
         $\begin{array}{r}
         \displaystyle g_X(t) = \frac{p}{1-qt} \\
@@ -106,8 +153,8 @@
         \displaystyle F_X(x) = 1 - q^{\floor{x}}
     \end{array}$ & 
     $\begin{array}{l}
-    \displaystyle \hspace{0.45cm}  E[X] = \frac{q}{p} \\
-    \displaystyle Var(X) = \frac{q}{p^2}
+    \displaystyle \hspace{0.36cm}  EX = \frac{q}{p} \\
+    \displaystyle VarX = \frac{q}{p^2}
     \end{array}$ & 
     $\begin{array}{r}
     \displaystyle g_X(t) = \frac{pt}{1-qt} \\
@@ -128,7 +175,7 @@
 
 \begin{tabular}{@{}l p{6.0cm} p{5cm} p{3.0cm} r@{}}
 \toprule
-Distribution, notation & Density Function & Cumulative Distribution & Statistics & Generating Functions \\ 
+Distribution, notation & Density Function $f_X(x)$ & Cumulative Distribution $F_X(x)$ & Statistics & Generating Functions \\ 
 \midrule
 $\begin{array}{l}
         \textbf{Normal} \\
@@ -136,20 +183,43 @@ $\begin{array}{l}
         \sigma > 0
 \end{array}$ & 
 $\begin{array}{l}
-\displaystyle f_X(x) = \frac{1}{\sqrt{2\pi \sigma^2}} exp \Bigl\{  -\frac{1}{2} \frac{(x-\mu)^2}{\sigma^2}\Bigr\}\\
+\displaystyle  \frac{1}{\sqrt{2\pi \sigma^2}} exp \Bigl\{  -\frac{1}{2} \frac{(x-\mu)^2}{\sigma^2}\Bigr\}\\
 \end{array}$ & 
 $\begin{array}{l}
-    \displaystyle F_X(x) = \Phi \left(\frac{x-\mu}{\sigma}\right)
+    \displaystyle  \Phi \left(\frac{x-\mu}{\sigma}\right)
 \end{array}$ & 
 $\begin{array}{l}
-\displaystyle \hspace{0.45cm}  E[X] = \mu \\
-\displaystyle Var(X) = \sigma^2
+\displaystyle \hspace{0.36cm}  EX = \mu \\
+\displaystyle VarX = \sigma^2
 \end{array}$ & 
 $\begin{array}{r}
 \displaystyle \psi_X(t) = e^{t\mu + \frac{1}{2} \sigma^2 t^2} \\
 \displaystyle \varphi_X(t) = e^{it\mu - \frac{1}{2} \sigma^2 t^2}
 \end{array}$ \\
 \multicolumn{4}{p{19cm}}{The Normal distribution is central to the central limit theorem} \\
+
+
+$\begin{array}{l}
+    \textbf{Exponential} \\
+    Exp(\lambda) \\
+    \lambda > 0
+\end{array}$ & 
+
+$\begin{array}{l}
+\displaystyle   \frac{1}{\lambda} e^{-x / \lambda} \\
+\end{array}$ & 
+$\begin{array}{l}
+    \displaystyle  1-e^{-x / \lambda}
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle \hspace{0.36cm} EX = \lambda \\
+\displaystyle VarX = \lambda^2
+\end{array}$ & 
+$\begin{array}{r}
+\displaystyle \psi_X(t) = \frac{1}{(1 - \lambda t)} \\
+\displaystyle \varphi_X(t) = \frac{1}{(1 - \lambda it)}
+\end{array}$ \\
+\multicolumn{4}{p{19cm}}{Gamma is crucial in modeling waiting times and life data.} \\
 
 
 
@@ -160,20 +230,67 @@ $\begin{array}{l}
 \end{array}$ & 
 
 $\begin{array}{l}
-\displaystyle f_X(x) = \frac{1}{\Gamma(p)} x^{p-1} \frac{1}{a^p} e^{-x/a} \\
+\displaystyle  \frac{1}{\Gamma(p)} x^{p-1} \frac{1}{a^p} e^{-x/a} \\
 \end{array}$ & 
 $\begin{array}{l}
-    \displaystyle F_X(x) = \frac{1}{\Gamma(p)} \gamma \left(p, \frac{x}{a}\right)
+    \displaystyle  \frac{1}{\Gamma(p)} \gamma \left(p, \frac{x}{a}\right)
 \end{array}$ & 
 $\begin{array}{l}
-\displaystyle \hspace{0.45cm} E[X] = pa \\
-\displaystyle Var(X) = pa^2
+\displaystyle \hspace{0.36cm} EX = pa \\
+\displaystyle VarX = pa^2
 \end{array}$ & 
 $\begin{array}{r}
 \displaystyle \psi_X(t) = \frac{1}{(1 - a t)^{p}} \\
 \displaystyle \varphi_X(t) = \frac{1}{(1 - a it)^{p}}
 \end{array}$ \\
 \multicolumn{4}{p{19cm}}{Gamma is crucial in modeling waiting times and life data.} \\
+
+$\begin{array}{l}
+    \textbf{Laplace} \\
+    L(a) \\
+    n = 1, 2,...
+\end{array}$ & 
+
+$\begin{array}{l}
+\displaystyle \frac{1}{2a}e^{-|x|/a}, -\infty < x <\infty \\
+\end{array}$ & 
+$\begin{array}{l}
+   {\displaystyle {\begin{cases}{\frac {1}{2}}\exp \left({\frac {x-\mu }{b}}\right)&{\text{if }}x\leq \mu \\[8pt]1-{\frac {1}{2}}\exp \left(-{\frac {x-\mu }{b}}\right)&{\text{if }}x\geq \mu \end{cases}}}
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle \hspace{0.36cm} EX = 0 \\
+\displaystyle VarX = 2a^2\\
+\end{array}$ & 
+$\begin{array}{r}
+\displaystyle \psi_X(t) = {\displaystyle {\frac {1}{1-a^{2}t^{2}}}}, |t|<1/a\\
+\displaystyle \varphi_X(t) = {\displaystyle {\frac {1}{1+a^{2}t^{2}}}}
+\end{array}$ \\
+\multicolumn{4}{p{19cm}}{Laplace is kinda cool} \\
+
+
+$\begin{array}{l}
+    \textbf{Beta} \\
+    \beta(r,s) \\
+    r,s > 0
+\end{array}$ & 
+
+$\begin{array}{l}
+    {\displaystyle {\frac {\Gamma (r+s)}{\Gamma (r) \Gamma (s)}x^{r-1} (1-x)^{s-1}}, 0<x<1}
+\end{array}$ & 
+$\begin{array}{l}
+   {\displaystyle No. }
+\end{array}$ & 
+$\begin{array}{l}
+\displaystyle \hspace{0.36cm} EX =\frac{r}{r+s} \\
+\displaystyle VarX = \frac{rs}{(r+s)^2(r+s+1)}\\
+\end{array}$ & 
+$\begin{array}{r}
+\displaystyle \psi_X(t) = {\displaystyle 1+\sum _{k=1}^{\infty }\left(\prod _{r=0}^{k-1}{\frac {\alpha +r}{\alpha +\beta +r}}\right){\frac {t^{k}}{k!}}}\\
+\displaystyle \varphi_X(t) = {\displaystyle {\frac {1}{1+a^{2}t^{2}}}}
+\end{array}$ \\
+\multicolumn{4}{p{19cm}}{Laplace is kinda cool} \\
+
+
 
 
 $\begin{array}{l}
@@ -183,20 +300,20 @@ $\begin{array}{l}
 \end{array}$ & 
 
 $\begin{array}{l}
-\displaystyle f_X(x) = \frac{\Gamma\left(\frac{n+1}{2}\right)}{\sqrt{\pi n} \Gamma\left(\frac{n}{2}\right)} \left(1+\frac{x^2}{n}\right)^{-\frac{n+1}{2}} \\
+\displaystyle \frac{\Gamma\left(\frac{n+1}{2}\right)}{\sqrt{\pi n} \Gamma\left(\frac{n}{2}\right)} \left(1+\frac{x^2}{n}\right)^{-\frac{n+1}{2}} \\
 \end{array}$ & 
 $\begin{array}{l}
     \displaystyle No. \\
 \end{array}$ & 
 $\begin{array}{l}
-\displaystyle \hspace{0.45cm} E[X] = 0 \\
-\displaystyle Var(X) = \frac{n}{n-2}, n>2\\
+\displaystyle \hspace{0.36cm} EX = 0 \\
+\displaystyle VarX = \frac{n}{n-2}, n>2\\
 \end{array}$ & 
 $\begin{array}{r}
 \displaystyle \psi_X(t) = undefined \\
 \displaystyle \varphi_X(t) = No.
 \end{array}$ \\
-\multicolumn{4}{p{19cm}}{Student t is crucial in modeling waiting times and life data.} \\
+\multicolumn{4}{p{19cm}}{Student t is crucial in modeling waiting times and life data. The inventor worked at Guiness, and published under a pseudonym so that their competitors wouldn't know they were using advanced statsistics} \\
 
 
 \bottomrule

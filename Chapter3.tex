@@ -598,7 +598,215 @@ Prove that \(\varphi_{S_N}(t) = g_N(\varphi_X(t))\)
 Use the result from 6.4 do do exercise 6.3 again.
 
 \solution
-Im so darn tired ok fine ill do it. No actually i wont, its literally just 6.3 but keep the $-$ signs in mind
+Im so darn tired ok fine ill do it. No actually i wont, its literally just 6.3 but keep the $-$ signs from $i$ in mind
+
+\subsection{Branching Process}
+
+\exercise
+
+\begin{enumerate}
+    \item Prove that $E[X(n)] = (E[Y])^n$
+    \item Prove that $VarX(n) = \sigma^2(m^{n-1}+m^{n} + ... + m^{2n-2})$
+\end{enumerate}
+
+\solution
+\begin{enumerate}
+    \item We know that \(g_{n}(t) = g_{n-1}(g_{Y_1}(t)) \), and since $X(0)=1$ we have $X(1) = Y$. We also know the base case, $g_2(t)=g_1(g_1(t))$. By induction we have
+\[
+  g_n(t) = g_{n-1}(g_1(t)) \rightarrow g_{n+1} = g_{n}(g_1(t)) = g_{n-1}(g_1(g_1(t))) = g_{n-1}(g_2(t))
+\]
+\item The law of total variance states 
+\[
+    Var X(n) = E[Var(X(n)|X(n-1))] + Var(E[X(n)|X(n-1)]) \]
+
+Which can be rewritten as (using the fact that $Var(Y) = \sigma^2$ and $E[X(n)] = m^n$)
+\[
+Var X(n) = E[Var(Y_1 + Y_2 + ... Y_{X(n-1)})] + Var(E[Y_1 + Y_2 + ... Y_{X(n-1)}]) =\]
+\[
+     E[X(n-1)Var(Y)] + Var(X(n-1)E[Y]) = \sigma^2E[X(n-1)] + m^2Var(X(n-1))
+      \]
+
+    Together with $Var(X(0)) = 0$, we get our result by induction.
+
+Another way to prove it is through generating functions.
+
+% k
+
+% We know that a trunkated geometric series can be written as
+% \item \[
+%     x^n + x^{n+1} + ... +x^{2n-2}
+% \]
+\end{enumerate}
+
+
+\subsection{Problems}
+
+\problem  %problem 1
+The nonnegative, integer-valued random variable $X$ has generating function $g_X(t) = \log\left(\frac{1}{1 - qt}\right)$. Determine $P(X = k)$ for $k = 0, 1, 2$, $\mathbb{E}X$, and $\mathrm{Var}X$.
+
+
+\solution
+Given the generating function for a random variable $X$:
+\[
+g_X(t) = \ln\left(\frac{1}{1 - qt}\right) = -\ln(1-qt),
+\]
+we first normalize the generating function by setting $g_X(1) = 1$, leading to:
+\[
+q = 1 - e^{-1}.
+\]
+The generating function can be expanded as:
+\[
+-\log(1 - qt) = \sum_{k=1}^\infty \frac{(qt)^k}{k} = \sum_{k=1}^\infty t^k \frac{(1 - e^{-1})^k}{k}.
+\]
+This gives us the probability mass function:
+\[
+P(X = k) = \frac{(1 - e^{-1})^k}{k} \quad \text{for } k \geq 1, \text{ and } P(X = 0) = 0.
+\]
+
+Taking the derivative yields 
+\[
+  EX = g_X'(1) = -(1-(1-e^{-1})\cdot1)^{-1}(1-(1-e^{-1})\cdot1) = e-1
+\]
+
+To calculate the variance \(\mathrm{Var}(X)\):
+\[
+\mathrm{Var}(X) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2,
+\]
+where \(\mathbb{E}(X^2)\) involves calculating the second derivative of the generating function:
+\[
+g_X''(t) = \frac{d}{dt} \left( \frac{q}{1 - qt} \right) = \frac{q^2}{(1-qt)^2},
+\]
+evaluated at \(t = 1\):
+\[
+g_X''(1) = \frac{(1-e^{-1})^2}{(1-(1-e^{-1}))^2} = e^2 - 2e + 1,
+\]
+so,
+\[
+\mathbb{E}(X^2) = \mathbb{E}(X(X-1)) + \mathbb{E}(X) = (e^2 - 2e + 1) + (e-1) = e^2 - e,
+\]
+and therefore,
+\[
+\mathrm{Var}(X) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2 = (e^2 - e) - (e-1)^2 = e - 1.
+\]
+
+\problem % 2
+The random variable $X$ has the property that all moments are equal, i.e., $\mathbb{E}X^n = c$ for all $n \geq 1$, for some constant $c$. Find the distribution of $X$ (no proof of uniqueness is required).
+
+\solution Since uniqueness is not required, its suficcient to find one solution. We are given the differential equation.
+
+\[
+\psi_X(t) = \psi_X'(t).
+\]
+Which has the trivial solution \[
+    \psi_X(t) = e^t = 0 + 1e^t \sim \psi_{Be(1)}(t)
+\]
+
+
+\
+
+\problem % 3
+The random variable $X$ has the property that $\mathbb{E}X^n = \frac{2^n}{n+1}$, for $n = 1, 2, \dots$ Find some (in fact, the unique) distribution of $X$ having these moments.
+
+\problem % 4
+Suppose that $Y$ is a random variable such that $\mathbb{E}Y^k = \frac{1}{4} + 2^{k-1}$, for $k = 1, 2, \dots$ Determine the distribution of $Y$.
+
+\problem % 5
+Let $Y \sim \beta(n,m)$, $(n, m)$ integers 
+\begin{enumerate}
+    \item Compute $ \psi_{-\log Y}(t)$
+    \item Show that $-\log Y$ has the same distribution as $\sum_{k=1}^{m}X_k$ where $X_k \sim Exp()$
+\end{enumerate}
+
+
+
+
+
+
+
+\solution
+
+\begin{enumerate}
+    \item \[
+        \psi_{-\log Y}(t) =  E[e^{-\log(Y)t}] = E[\exp\{log(Y^{-t})\}] = E[Y^{-t}]
+    \]
+    Using the fact thats
+    \[f_Y(y)=\frac{y^{n-1}(1-y)^{m-1}}{ \mathrm{B}(n,m)}
+    \] 
+    Where $ \mathrm {B}$ is the Beta function, we get the integral
+\[
+    psi_{-\log Y}(t) = \int_{0}^{1} y^{-t} f_Y(y) dy  = \int_{0}^{1} y^{-t} \frac{1}{\mathrm{B}(n,m)}
+\]
 
 \end{enumerate}
+
+\problem Show, by using MGF's, that if $X \sim L(1)$ and $Y \sim Exp(1)$ then $X \overset{d}{=} Y_1 - Y_2$
+
+
+
+
+To show that $X \sim L(1)$ is equidistributed with $Y_1 - Y_2$ where $Y_1, Y_2 \sim Exp(1)$, we use the characteristic functions (CF).
+
+\subsection*{Characteristic Functions}
+The CF for the Laplace distribution $L(a)$ is:
+\[
+\varphi_X(t) = \frac{1}{1 + a^2 t^2} = \varphi_X(t) = \frac{1}{1 + t^2}
+\]
+For $a=1$. The CF for the Exponential distribution $Exp(\lambda)$ is:
+\[
+\varphi_Y(t) = \frac{1}{1 - it} =
+\varphi_Y(t) = \frac{1}{1 - it/\lambda}
+\]
+For $\lambda=1$. Since $Y_1$ and $Y_2$ are independent:
+\[
+\varphi_{Y_1 - Y_2}(t) = \varphi_{Y_1}(t) \cdot \varphi_{-Y_2}(t) = \left(\frac{1}{1 - it}\right) \left(\frac{1}{1 + it}\right) = \frac{1}{1 + t^2}
+\]
+
+Since:
+\[
+\varphi_X(t) = \varphi_{Y_1 - Y_2}(t) = \frac{1}{1 + t^2}
+\]
+We conclude that $X \overset{d}{=} Y_1 - Y_2$, indicating that they are equidistributed.
+
+% Set the counter to 42 before the first problem
+\setcounter{problem}{42}
+
+\problem Consider a branching process with a Poisson-distributed offspring with mean \( m \). Let \( X(1) \) and \( X(2) \) be the number of individuals in generations 1 and 2, respectively. Determine the generating function of:
+\begin{itemize}
+    \item[(a)] \( X(1) \),
+    \item[(b)] \( X(2) \),
+    \item[(c)] \( X(1) + X(2) \),
+    \item[(d)] Determine \( \text{Cov}(X(1), X(2)) \).
+\end{itemize}
+
+\solution
+\begin{enumerate}
+    \item The generating function \( G_{X(1)}(s) \) for \( X(1) \) is:
+    \[ g_{X(1)}(s) = e^{m(s-1)} \]
+
+    \item darn
+    \item 
+\end{enumerate}
+% Part (a)
+
+% Part (b)
+The generating function \( G_{X(2)}(s) \) for \( X(2) \), where \( X(1) \) individuals each follow a Poisson distribution:
+\[ G_{X(2)}(s) = e^{m(e^{m(s-1)}-1)} \]
+
+% Part (c)
+The generating function \( G_{X(1) + X(2)}(s) \) for \( X(1) + X(2) \) is:
+\[ G_{X(1)+X(2)}(s) = e^{m(s-1) + m(e^{m(s-1)}-1)} \]
+
+% Part (d)
+The covariance \( \text{Cov}(X(1), X(2)) \) between \( X(1) \) and \( X(2) \) is:
+\[ \text{Cov}(X(1), X(2)) = E[X(1)X(2)] - E[X(1)]E[X(2)] = m^3 - m^2 \]
+\end{enumerate}
+
+
+\solution
+
+The probability distribution for \( X \), given \( Y = p \) uniformly distributed over \([0,1]\), is computed by integrating:
+\[ P(X = k) = \int_0^1 (1-p)^{k-1} p \, dp \]
+Using the beta function, this can be evaluated as:
+\[ P(X = k) = \frac{1}{(k)(k+1)} \]
+Thus, \( X \) follows a distribution where \( P(X = k) = \frac{1}{k(k+1)} \) for \( k \geq 1 \).
 
