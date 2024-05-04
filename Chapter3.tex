@@ -714,7 +714,7 @@ Suppose that $Y$ is a random variable such that $\mathbb{E}Y^k = \frac{1}{4} + 2
 Let $Y \sim \beta(n,m)$, $(n, m)$ integers 
 \begin{enumerate}
     \item Compute $ \psi_{-\log Y}(t)$
-    \item Show that $-\log Y$ has the same distribution as $\sum_{k=1}^{m}X_k$ where $X_k \sim Exp()$
+    \item Show that $-\log Y$ has the same distribution as $S = \sum_{k=1}^{m}X_k$ where $X_k \sim Exp()$
 \end{enumerate}
 
 
@@ -730,23 +730,43 @@ Let $Y \sim \beta(n,m)$, $(n, m)$ integers
         \psi_{-\log Y}(t) =  E[e^{-\log(Y)t}] = E[\exp\{log(Y^{-t})\}] = E[Y^{-t}]
     \]
     Using the fact thats
-    \[f_Y(y)=\frac{y^{n-1}(1-y)^{m-1}}{ \mathrm{B}(n,m)}
+    \[f_Y(y)=\frac{y^{n-1}(1-y)^{m-1}}{ \mathrm{B}(n,m)}\hspace{1em}; \hspace{1em} \mathrm{B}(\alpha ,\beta) = \int_{0}^{1} y^{\alpha-1} (1-y)^{\beta-1} dy
     \] 
     Where $ \mathrm {B}$ is the Beta function, we get the integral
 \[
-    psi_{-\log Y}(t) = \int_{0}^{1} y^{-t} f_Y(y) dy  = \int_{0}^{1} y^{-t} \frac{1}{\mathrm{B}(n,m)}
+    \psi_{-\log Y}(t) = \int_{0}^{1} y^{-t} f_Y(y) dy  = \int_{0}^{1} y^{-t} \frac{1}{\mathrm{B}(n,m)} y^{n-1} (1-y)^{m-1} dy
 \]
 
+
+\[
+    = \frac{1}{\mathrm{B}(n,m)} \int_{0}^{1} y^{(n-t)-1} (1-y)^{m-1} dy = \frac{\mathrm{B}(n-t,m)}{\mathrm{B}(n,m)} = \frac{\frac{\Gamma(n-t)\Gamma(m)}{\Gamma(n-t+m)}}{\frac{\Gamma(n)\Gamma(m)}{\Gamma(n+m)}} =
+     \frac{\Gamma(n+m)\Gamma(n-t)}{\Gamma(n+m-t)\Gamma(n)}
+\]
+Despite the problem description, this equation works regardless of $n,m,t$, since you can factor out the non-integer parts from the Gamma functions. Regardless; 
+\[
+    =\frac{\Gamma(n+m)}{\Gamma(n)} \frac{\Gamma(n-t)}{\Gamma(n+m-t)} = \frac{(n+m-1)(n+m-2)...(n+1)(n) }{(n+m-t-1)(n+m-t-2)...(n-t+1)(n-t)}
+\]
+\[
+    = \frac{n+m-1}{n+m-1-t}\cdot\frac{n+m-2}{n+m-2-t} ...\cdot\frac{n}{n-t} = \prod_{k=0}^{m-1} \frac{n+k}{n+k-t}
+\]
+\item We want to prove \[
+  \psi_S(t) = \psi_{X_1 + ... X_m}(t) = \psi_{X_1}(t)\psi_{X_2}(t)...\psi_{X_m}(t) = \psi_{Exp(\lambda_1)}(t)\psi_{Exp(\lambda_2)}(t)...\psi_{Exp(\lambda_m)}(t)
+\]
+We simply use the result form (a)
+\[ 
+    \frac{n+k}{n+k-t} = \frac{1/(n+k)}{1/(n+k)} \frac{n+k}{n+k-t} = \frac{1}{1-\frac{t}{n+k}} = \psi_{Exp(n+k)(t)}
+\]
+Which proves (b)
 \end{enumerate}
 
-\problem Show, by using MGF's, that if $X \sim L(1)$ and $Y \sim Exp(1)$ then $X \overset{d}{=} Y_1 - Y_2$
+\problem % 6
+ Show, by using MGF's, that if $X \sim L(1)$ and $Y \sim Exp(1)$ then $X \overset{d}{=} Y_1 - Y_2$
 
 
 
 
 To show that $X \sim L(1)$ is equidistributed with $Y_1 - Y_2$ where $Y_1, Y_2 \sim Exp(1)$, we use the characteristic functions (CF).
-
-\subsection*{Characteristic Functions}
+\solution
 The CF for the Laplace distribution $L(a)$ is:
 \[
 \varphi_X(t) = \frac{1}{1 + a^2 t^2} = \varphi_X(t) = \frac{1}{1 + t^2}
@@ -766,6 +786,11 @@ Since:
 \varphi_X(t) = \varphi_{Y_1 - Y_2}(t) = \frac{1}{1 + t^2}
 \]
 We conclude that $X \overset{d}{=} Y_1 - Y_2$, indicating that they are equidistributed.
+
+
+\setcounter{problem}{42}
+
+
 
 % Set the counter to 42 before the first problem
 \setcounter{problem}{42}
