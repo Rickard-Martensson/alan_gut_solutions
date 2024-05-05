@@ -916,7 +916,7 @@ $p_k$ & $\frac{1}{6} $&$ \frac{1}{3}$ & $\frac{1}{2}$ \\
 \end{center}
 \begin{enumerate}
 \item Determine the prob of extinction
-\item Probability of the peopulation being extinct in the $2$nd generation
+\item Probability of the population being extinct in the $2$nd generation
 \item The expected number of children given there are no grandchildren
 
 \end{enumerate}
@@ -933,11 +933,46 @@ $p_k$ & $\frac{1}{6} $&$ \frac{1}{3}$ & $\frac{1}{2}$ \\
     \[
         g_{X(2)}(0) = g_X(g_X(0)) = g_X\Bigl(\frac{1}{6}\Bigr) = \frac{1}{6} + \frac{1}{18} + \frac{1}{72} = \frac{12+4+1}{72} = \frac{17}{72}     
     \]
+    \item i dont know if theres a way to prove this by MGF's, but using kolgomorov:
+    \[
+        P(X(1)=x|X(2)=0) = \frac{P(X(2)=0|X(1)=x) P(X(1)=x)}{P(X(2)=0)} = \frac{\Bigl(\frac{1}{6}\Bigr)^x p_x}{\frac{17}{72}}
+    \]
+    \[
+      E[X(1)|X(2)=0] = \sum x P(X(1)=x|X(2)=0)  = 
+      \sum x \frac{\Bigl(\frac{1}{6}\Bigr)^x p_x}{\frac{17}{72}} =
+      0\frac{(1/6)^0\frac{1}{6}}{17/72} + 1\frac{(1/6)^1\frac{1}{3}}{17/72} + 2\frac{(1/6)^2\frac{1}{2}}{17/72}
+    \]
+    \[
+      = 0 + \frac{72}{18 \cdot 17} + \frac{72}{36 \cdot 17} = \frac{6}{17} 
+    \]
+
 \end{enumerate}
 
 
+\problem
+\problem
+\problem
+The growth dynamics of pollen cells can be modeled by binary splitting as follows: After one unit of time, a cell either splits into two or dies. The new cells develop according to the same law independently of each other. The probabilities of dying and splitting are 0.46 and 0.54, respectively.
 
+\begin{enumerate}
+    \item Determine the maximal initial size of the population in order for the probability of extinction to be at least 0.3.
+    \item What is the probability that the population is extinct after two generations if the initial population is the maximal number obtained in (a)?
+\end{enumerate}
 
+\solution
+\begin{enumerate}
+    \item One pollen cell has a $\frac{46}{54}$ probability of dying. Since each cell is independent, we want:
+     \[
+        \frac{46}{54}^k = \frac{1}{3} \rightarrow k = \log_{46/54}(\frac{1}{3}) \approx 7
+    \]
+    \item The PGF of a single cell $Y$ is $g_Y(t)=0.46+0.54t^2$. We want to find \[
+        P(X(2) = 0)= g_{X(2)}(0) = g_{X(1)}(g_Y(0)) = g_{X(1)}(.46) = g_{7}(g_Y(.46)) = g_7(.46+.54(.46)^2)
+        \]
+        \[
+            =
+            (.46+.54(.46)^2)^7 \approx .0205    
+        \]
+\end{enumerate}
 
 \setcounter{problem}{42}
 
