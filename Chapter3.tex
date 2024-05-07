@@ -1016,3 +1016,49 @@ Using the beta function, this can be evaluated as:
 \[ P(X = k) = \frac{1}{(k)(k+1)} \]
 Thus, \( X \) follows a distribution where \( P(X = k) = \frac{1}{k(k+1)} \) for \( k \geq 1 \).
 
+\problem
+\problem
+\problem
+
+
+
+Let \(X(n)\) be the number of individuals in the \(n\)th generation of a branching process \(X(0) = 1\), and set \(T_n = 1 + X(1) + \cdots + X(n)\), that is, \(T_n\) equals the total progeny up to and including generation number \(n\). Let \(g_X(t)\) and \(G_n(t)\) be the generating functions of \(X(1)\) and \(T_n\), respectively. Prove the following formula:
+\[
+G_n(t) = t \cdot g(G_{n-1}(t)).
+\]
+\solution
+
+Proof by induction. Base case
+\[
+T_0 = 1, G_0 = [E^{T_0}] = t
+\]
+\[
+G_1(t) = g_{T_1}(t) = g_{1 + X(1)}(t) = E[ t^{1+X(1)}] = E[ t \cdot t^{X(1)}] = t E[t^{X(1)}] = t g_X(t) = t g_X(G_0(t))
+\]
+
+Now the inductive step:
+
+\[
+  G_{n+1}(t)=E[t^{T_{n+1}}] =E[t^{T_{n} + X(n+1)}] = 
+  E[E[t^{T_{n}}t^{X(n+1)}|X(0),X(1),...,X(n)]] = 
+\]
+\[
+  E[E[t^{X(0)+X(1)+...+X(n)}t^{X_0 + X_1 + ... X_{X(n)}}|X(0),X(1),...X(n)]] = 
+  E[t^{T_n}E[t^{X_0 + X_1 + ... X_{X(n)}}]] 
+\]
+\[
+= E[t^{T_n}E[t^{X}]^{X(n)}] =  E[t^{T_n}E[t^{X}]^{X(n)}]
+\]
+And the recursion continoues...
+
+However a better solution in my opinion is realizing that $T_n$ a bunch of independent $T_{n-1}$, one for each child $X(0)$ has. ie;
+\[
+T_n = 1 + \sum_{i=0}^{X(1)} T_{n-1}^{(i)}    
+\]
+Where the $T^{(i)}$ denotes the $i$th offspring, and where each one of the is independent of each other. Doing the math yields
+\[
+    G_{n}(t) = E[t^n] = E[t^{\textstyle 1+ \sum_{i=0}^{X(1)} T_{n-1}^{(i)}}    ]  = tE[t^{T_{n-1}^{(0)}} t^{T_{n-1}^{(1)}} ... t^{T_{n-1}^{(X(1))}} ] = \text{(independent)} = 
+    t g_X(G_n(t))
+\]
+
+Very elegant, dont you agree?
