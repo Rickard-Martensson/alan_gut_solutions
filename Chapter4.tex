@@ -1,16 +1,47 @@
 \section{Order Statistics}
 
-\subsection{Background}
+\subsection{One-Dimensional Results}
 
 \exercise
-Exercise description.
+Suppose that $F$ is continous. Compute $P(X_k= X(k), k = 1,2,...n)$, that is, the probability that the original sample is already orderd
 \solution
-Write your solution here.
+There are $n!$ ways to order the $X_k$ variables, each equaly likely. the probability of be in order is therefore $1/n!$.
 
 \exercise
-Exercise description.
+Suppose that $F$ is continous, and we have a sample of size $n$. We now make one further observation. Compute $P(X_{k:n} = X_{k:n+1})$.
 \solution
-Another solution here.
+First look at $k=1$, ie $P(X_{1:n} = X_{1:n+1})$.
+This is equal to asking "what is the probability that the $n+1$th sample is the smallest" which is $\frac{1}{n+1}$.
+
+We can imagine looking at the $n+1$ observations, and sorting them.
+The probability that the $n+1$th observation being in position $k$ is still $\frac{1}{n+1}$,
+so the probability of $X_{n+1}$ being less than $X_{(k)}$ is $\frac{k}{n+1}$.
+
+
+
+\exercise
+100 numbers are independently and uniformly selected as $X \sim U[0, 1]$ 
+\begin{enumerate}
+    \item whats the probability that $X_{(100)} < 0.9$
+    \item whats the probability that $X_{(2)} > 0.002$
+\end{enumerate}
+
+\solution
+\begin{enumerate}
+    \item \(
+      F_{(100)}(0.9)^{100} = 0.9^{100} \approx 2.65 10^{-5}  
+    \)
+    \item Lets split it up into two disjoint cases. \[
+      P(X_{(2)} > 0.002) = P(X_{(2)} > 0.002, X_{(1)} >0.002) +  P(X_{(2)} > 0.002, X_{(1)} <0.002)
+    = P(X_{(1)} >0.002) + P()
+      \]
+
+    Which is equal to \[
+      0.998^{100} + {100\choose 1}0.002^1 0.998^{99}  \approx 0.982
+    \]
+    
+\end{enumerate}
+
 
 \subsection{Advanced Topics}
 
