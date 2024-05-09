@@ -36,16 +36,91 @@ so the probability of $X_{n+1}$ being less than $X_{(k)}$ is $\frac{k}{n+1}$.
     = P(X_{(1)} >0.002) + P()
       \]
 
-    Which is equal to \[
-      0.998^{100} + {100\choose 1}0.002^1 0.998^{99}  \approx 0.982
-    \]
+    Which is equal to
+\[
+0.998^{100} + \genfrac{(}{)}{0pt}{}{100}{1} 0.002^1 0.998^{99} \approx 0.982
+\]
+
     
 \end{enumerate}
 
 
-\subsection{Advanced Topics}
+\subsection{The Joint Distribution of the Extremes}
 
-\exercise
-Exercise description.
+\exercise Prove that 
+\[
+  f_{X_{(1)}X_{(2)}} = n(n-1) (F(y)-F(x))^{n-2}f(y)f(x)  
+\]
+Using the assumption that density is continous, ie you can get meaningful results from $F(x+h)-F(x)$
+% \[
+%   \frac{\Gamma(n+1)}{\Gamma(k)\Gamma(n+1-k)}  
+% \]
 \solution
-Write your solution here.
+If we let $h$ and $k$ be "very small", then
+\[
+  P(x < X_{(1)} < x+h,y < X_{(n)} <y+k, )  
+\]\[
+  \approx P(1 \text{ obs } \in (x, x+h), n-2 \text{ obs } \in (x+h, y), 1 \text{ obs } \in (y, y+k) )
+\]
+Since the probability of getting multiple observations in $(x, x+h)$ or $(y, y+k)$ is diminishingly small.
+\[
+    \genfrac{(}{)}{0pt}{}{n}{1,n-2,1} (F(x+h)-F(x)) (F(y)-F(x))^{n-2} (F(y+k)-F(y))
+\]
+By the mean value theorem, we know $(F(x+h)-F(x)) \approx h \cdot f(x) $, and $(F(y+k)-F(y)) \approx k \cdot f(y) $ when $h$ and $k$ are small.
+This yields 
+
+\[
+    \genfrac{(}{)}{0pt}{}{n}{1,n-2,1} h\cdot f(x) (F(y)-F(x))^{n-2} k \cdot f(y)
+\]
+Taking the limit as $h, k \rightarrow 0_+$, dividing by $h,k$ and expanding the multinomial we get 
+\[
+    f_{X_{(1)}X_{(n)}}(x, y) = n(n-1) f(x)  (F(y)-F(x))^{n-2}f(y)  
+\]
+\exercise
+Give the details of the proof for
+\[
+f_{R_n}(r) = n(n - 1) \int_{-\infty}^{\infty} (F(u + r) - F(u))^{n-2} f(u + r) f(u) \, du,
+\]
+for $r > 0$.
+
+
+\solution
+First lets try and solve for $F_{R_n}(r)$, ie the cumulative probability that $X_{(n)} - X_{(1)} < r$. In other words, 
+the probability that all $X_1, X_2 ... X_n$ lie between some $u$ and $u+r$.
+
+\[
+    F_{R_n}(r) = P(u < X_k < u+r, \text{ for some } u)
+\]
+
+Ideally we want to integrate over every $u$, and then integrate every interval starting at $u$ and ending at some value $p < r$
+We use the solution to exercise 2.1
+
+
+ \[
+    F_{R_n}(r) = \int_{-\infty}^{\infty} \int_{0}^{r} f_{X_{(1)}, X_{(n)}}(u, u+p)  \, dp \, du
+\]
+\[
+    = \int_{-\infty}^{\infty} \int_{0}^{r} n(n-1)  (F(u+p)-F(u))^{n-2}f(u+p) f(u)    \, dp \, du
+\]
+
+to get $f_{R_n}(r)$ we derive with respect to $r$
+
+\[
+    \frac{\partial}{\partial r} F_{R_n}(r) =  f_{R_n}(r) =\frac{\partial}{\partial r}  \int_{-\infty}^{\infty} \int_{0}^{r} n(n-1)  (F(u+p)-F(u))^{n-2}f(u+p) f(u)    \, dp \, du
+\]
+
+By using the fundamental theorem of calculus, idea
+\[
+    \frac{\partial}{\partial r} \int_{0}^{r} f(x) dx = \frac{\partial}{\partial r} \biggl[F(x)\biggr]_{0}^{r} =
+    \frac{\partial}{\partial r} (F(r) - F(0)) = f(r)
+\]
+
+We get 
+
+
+\[
+ f_{R_n}(r) =n(n-1) \frac{\partial}{\partial r} \int_{0}^{r}   (F(u+r)-F(u))^{n-2}f(u+r) f(u)  \, du
+\]
+
+
+
